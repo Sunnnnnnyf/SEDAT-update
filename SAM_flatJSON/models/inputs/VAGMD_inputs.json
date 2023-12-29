@@ -1,0 +1,65 @@
+{
+    "VAGMD": [
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Capacity",
+            "Label": "Plant capacity",
+            "Units": "m3/day",
+            "Require": "*",
+            "Costraint": ""
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "FeedC_r",
+            "Label": "Feed concentration (35 to 105)",
+            "Units": "g/L",
+            "Require": "*",
+            "Costraint": "<106,>34"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "storage_hour",
+            "Label": "Thermal storage hours",
+            "Units": "hour",
+            "Require": "*",
+            "Costraint": ">0"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Fossil_f",
+            "Label": "Fossil fuel participation (fraction from 0 to 1)",
+            "Units": "",
+            "Require": "*",
+            "Costraint": "<1, >0"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "module",
+            "Label": "0' for AS7C1.5L module and '1' for AS26C5L module",
+            "Units": "none",
+            "Require": "*"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "TEI_r",
+            "Label": "Evaporator channel inlet temperature (60 to 80)",
+            "Units": "C",
+            "Require": "*"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "TCI_r",
+            "Label": "Condenser channel inlet temperature (20 to 30)",
+            "Units": "C",
+            "Require": "*"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "FFR_r",
+            "Label": "Feed flow rate (400 to 1100)",
+            "Units": "l/h",
+            "Require": "*",
+            "Costraint": "<1111,>399"
+        }
+    ]
+}

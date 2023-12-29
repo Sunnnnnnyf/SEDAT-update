@@ -1,0 +1,574 @@
+{
+    "Output": [
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "month",
+            "Label": "Resource Month",
+            "Group": "weather",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "hour",
+            "Label": "Resource Hour of Day",
+            "Group": "weather",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "solazi",
+            "Label": "Resource Solar Azimuth",
+            "Units": "deg",
+            "Group": "weather",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "solzen",
+            "Label": "Resource Solar Zenith",
+            "Units": "deg",
+            "Group": "weather",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "beam",
+            "Label": "Resource Beam normal irradiance",
+            "Units": "W/m2",
+            "Group": "weather",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "tdry",
+            "Label": "Resource Dry bulb temperature",
+            "Units": "C",
+            "Group": "weather",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "twet",
+            "Label": "Resource Wet bulb temperature",
+            "Units": "C",
+            "Group": "weather",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "wspd",
+            "Label": "Resource Wind Speed",
+            "Units": "m/s",
+            "Group": "weather",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "pres",
+            "Label": "Resource Pressure",
+            "Units": "mbar",
+            "Group": "weather",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "tou_value",
+            "Label": "Resource Time-of-use value",
+            "Group": "tou",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "eta_field",
+            "Label": "Field optical efficiency",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "defocus",
+            "Label": "Field optical focus fraction",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_b_conv",
+            "Label": "Receiver boiler power loss to convection",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_b_rad",
+            "Label": "Receiver boiler power loss to radiation",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_b_abs",
+            "Label": "Receiver boiler power absorbed",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_b_in",
+            "Label": "Receiver boiler pressure inlet",
+            "Units": "kPa",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_b_out",
+            "Label": "Receiver boiler pressure outlet",
+            "Units": "kPa",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_drop_b",
+            "Label": "Receiver boiler pressure drop",
+            "Units": "Pa",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "eta_b",
+            "Label": "Receiver boiler thermal efficiency",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_b_in",
+            "Label": "Receiver boiler temperature inlet",
+            "Units": "C",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_boiling",
+            "Label": "Receiver boiler temperature drum",
+            "Units": "C",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_max_b_surf",
+            "Label": "Receiver boiler temperature surface max",
+            "Units": "C",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_sh",
+            "Label": "Receiver superheater mass flow rate",
+            "Units": "kg/hr",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_sh_conv",
+            "Label": "Receiver superheater power loss to convection",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_sh_rad",
+            "Label": "Receiver superheater power loss to radiation",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_sh_abs",
+            "Label": "Receiver superheater power absorbed",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_sh_out",
+            "Label": "Receiver superheater pressure outlet",
+            "Units": "kPa",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "dP_sh",
+            "Label": "Receiver superheater pressure drop",
+            "Units": "Pa",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_max_sh_surf",
+            "Label": "Receiver superheater temperature surface max",
+            "Units": "C",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "eta_sh",
+            "Label": "Receiver superheater thermal efficiency",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "v_sh_max",
+            "Label": "Receiver superheater velocity at outlet",
+            "Units": "m/s",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "f_mdot_rh",
+            "Label": "Receiver reheater mass flow rate fraction",
+            "Units": "-",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_rh_conv",
+            "Label": "Receiver reheater power loss to convection",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_rh_rad",
+            "Label": "Receiver reheater power loss to radiation",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_rh_abs",
+            "Label": "Receiver reheater power absorbed",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_rh_in",
+            "Label": "Receiver reheater pressure inlet",
+            "Units": "kPa",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_rh_out",
+            "Label": "Receiver reheater pressure outlet",
+            "Units": "kPa",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "dP_rh",
+            "Label": "Receiver reheater pressure drop",
+            "Units": "Pa",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "eta_rh",
+            "Label": "Receiver reheater thermal efficiency",
+            "Units": "-",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_rh_in",
+            "Label": "Receiver reheater temperature inlet",
+            "Units": "C",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_rh_out",
+            "Label": "Receiver reheater temperature outlet",
+            "Units": "C",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_max_rh_surf",
+            "Label": "Receiver reheater temperature surface max",
+            "Units": "C",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "v_rh_max",
+            "Label": "Receiver reheater velocity at outlet",
+            "Units": "m/s",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_inc_full",
+            "Label": "Receiver power incident (excl. defocus)",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_abs_rec",
+            "Label": "Receiver power absorbed total",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_rad_rec",
+            "Label": "Receiver power loss to radiation total",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_conv_rec",
+            "Label": "Receiver power loss to convection total",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_therm_in_rec",
+            "Label": "Receiver power to steam total",
+            "Units": "MWt",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "eta_rec",
+            "Label": "Receiver thermal efficiency",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_aux",
+            "Label": "Auxiliary mass flow rate",
+            "Units": "kg/hr",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_aux",
+            "Label": "Auxiliary heat rate delivered to cycle",
+            "Units": "MW",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_aux_fuel",
+            "Label": "Fuel energy rate to aux heater",
+            "Units": "MMBTU",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_out_net",
+            "Label": "Cycle electrical power output (net)",
+            "Units": "MWe",
+            "Group": "Net_E_Calc",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_cycle",
+            "Label": "Cycle electrical power output (gross)",
+            "Units": "MWe",
+            "Group": "Net_E_Calc",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_fw",
+            "Label": "Cycle temperature feedwater outlet",
+            "Units": "C",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_makeup",
+            "Label": "Cycle mass flow rate cooling water makeup",
+            "Units": "kg/hr",
+            "Group": "Type250",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_cond",
+            "Label": "Condenser pressure",
+            "Units": "Pa",
+            "Group": "Type250",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "f_bays",
+            "Label": "Condenser fraction of operating bays",
+            "Group": "Type250",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "W_dot_boost",
+            "Label": "Parasitic power receiver boost pump",
+            "Units": "MWe",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "pparasi",
+            "Label": "Parasitic power heliostat drives",
+            "Units": "MWe",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_plant_balance_tot",
+            "Label": "Parasitic power generation-dependent load",
+            "Units": "MWe",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_fixed",
+            "Label": "Parasitic power fixed load",
+            "Units": "MWe",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_cooling_tower_tot",
+            "Label": "Parasitic power condenser operation",
+            "Units": "MWe",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_piping_tot",
+            "Label": "Parasitic power equiv. header pipe losses",
+            "Units": "MWe",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_parasitics",
+            "Label": "Parasitic power total consumption",
+            "Units": "MWe",
+            "Group": "Outputs",
+            "Constraints": "LENGTH=8760"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_energy",
+            "Label": "Annual Energy",
+            "Units": "kWh",
+            "Group": "Type228"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_W_cycle_gross",
+            "Label": "Electrical source - Power cycle gross output",
+            "Units": "kWh",
+            "Group": "Type228"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_total_water_use",
+            "Label": "Total Annual Water Usage: cycle + mirror washing",
+            "Units": "m3",
+            "Group": "PostProcess"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "conversion_factor",
+            "Label": "Gross to Net Conversion Factor",
+            "Units": "%",
+            "Group": "Calculated"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "capacity_factor",
+            "Label": "Capacity factor",
+            "Units": "%"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "kwh_per_kw",
+            "Label": "First year kWh/kW",
+            "Units": "kWh/kW"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "system_heat_rate",
+            "Label": "System heat rate",
+            "Units": "MMBtu/MWh"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_fuel_usage",
+            "Label": "Annual fuel usage",
+            "Units": "kWh"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "gen",
+            "Label": "System power generated",
+            "Units": "kW",
+            "Group": "Time Series"
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+{"yrs": 20, "int_rate": 0.04, "coe": 0.07, "solar_coe": null, "sam_coe": 0.07, "oaro_cost": 50, "ro_cost": 30, "downtime": 10, "chem_cost": 0.03, "labor_cost": 0.05, "disposal_cost": 0.01, "insurance": 0.5, "practical_inv_factor": 1.6, "rep_rate": 5, "sec": 5, "cost_storage": 150}

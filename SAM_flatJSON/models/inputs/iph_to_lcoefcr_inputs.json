@@ -1,0 +1,57 @@
+{
+    "iph_to_lcoefcr": [
+	    {
+            "DataType": "SSC_NUMBER",
+            "Name": "annual_electricity_consumption",
+            "Label": "Annual electricity consumption w/ avail derate",
+            "Units": "kWe-hr",
+            "Group": "IPH_LCOH",
+            "Require": "*",
+            "Tab": "Solar Field"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "electricity_rate",
+            "Label": "Cost of electricity used to operate pumps/trackers",
+            "Units": "$/kWe",
+            "Group": "IPH_LCOH",
+            "Require": "*",
+            "Tab": "Solar Field"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "fixed_operating_cost",
+            "Label": "Annual fixed operating cost",
+            "Units": "$/kW",
+            "Group": "Simple LCOE",
+            "Require": "*",
+            "Tab": "Solar Field"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "capital_cost",
+            "Label": "Capital cost",
+            "Units": "$/kW",
+            "Group": "Simple LCOE",
+            "Require": "*",
+            "Tab": "Solar Field"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "variable_operating_cost",
+            "Label": "Annual variable operating cost",
+            "Units": "$/kWh",
+            "Group": "Simple LCOE",
+            "Require": "*",
+            "Tab": "Solar Field"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "fixed_charge_rate",
+            "Label": "Fixed charge rate",
+            "Group": "Simple LCOE",
+            "Require": "*",
+            "Tab": "Solar Field"
+        }
+    ]
+}

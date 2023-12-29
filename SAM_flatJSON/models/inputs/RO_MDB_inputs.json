@@ -1,0 +1,264 @@
+{
+    "RO_MDB": [
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "capacity",
+            "Label": "Capacity",
+            "Units": "m3/day",
+            "Require": "*",
+            "Tab": "General"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "FeedC_r",
+            "Label": "Feed salinity",
+            "Units": "g/L",
+            "Require": "*",
+            "Tab": "General"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "T_sw",
+            "Label": "Feed water temperature",
+            "Units": "oC",
+            "Require": "*",
+            "Tab": "General"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "RO_rr",
+            "Label": "Recovery rate",
+			"Units": "%",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Design Point of the System"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "pretreat_power",
+            "Label": "Power requirement for pretreatment",
+            "Units": "kWh(e)/m3",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Design Point of the System"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "storage_hour",
+            "Label": "Battery storage hours",
+            "Units": "hour",
+            "Require": "*",
+            "Costraint": ">0",
+            "Tab": "RO",
+            "Section": "Design Point of the System"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "nERD",
+            "Label": "Energy recovery device efficiency",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Pump and ERD Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "nBP",
+            "Label": "Boost pump efficiency",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Pump and ERD Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "nHP",
+            "Label": "High presssure pump efficiency",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Pump and ERD Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "nFP",
+            "Label": "Feed pump efficiency",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Pump and ERD Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "Qpnom1",
+            "Label": "Nominal permeate production per membrane element",
+			"Units": "m3/hr",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Membrane Characteristics from Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "Am1",
+            "Label": "Membrane area per membrane element",
+			"Units": "m2",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Membrane Characteristics from Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "Pmax1",
+            "Label": "Max pressure of membrane element",
+			"Units": "bar",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Membrane Characteristics from Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "Ptest1",
+            "Label": "Applied test pressure for each mem element",
+			"Units": "bar",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Membrane Characteristics from Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "Ctest1",
+            "Label": "Membrane manufacturer's test feed salinity (TDS) for each element",
+			"Units": "ppt",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Membrane Characteristics from Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "SR1",
+            "Label": "Rated salt rejection of each element",
+			"Units": "%",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Membrane Characteristics from Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "Rt1",
+            "Label": "Test recovery rate for each element",
+			"Units": "",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Membrane Characteristics from Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "Pdropmax",
+            "Label": "Maximum pressure drop per membrane element",
+			"Units": "bar",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Membrane Characteristics from Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "Pfp",
+            "Label": "Pressure of intake feed pumps",
+			"Units": "bar",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Membrane Characteristics from Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "maxQf",
+            "Label": "Maximum Feed Flow",
+			"Units": "m3/h",
+            "Require": "*",
+            "Tab": "RO",
+            "Section": "Membrane Characteristics from Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "module",
+            "Label": "'0' for AS7C1.5L module and '1' for AS26C5L module",
+            "Units": "",
+            "Require": "*",
+            "Tab": "VAGMD-batch"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "TEI_r",
+            "Label": "Evaporator channel inlet temperature",
+            "Units": "C",
+            "Require": "*",
+            "Tab": "VAGMD-batch"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "TCI_r",
+            "Label": "Condenser channel inlet temperature",
+            "Units": "C",
+            "Require": "*",
+            "Tab": "VAGMD-batch"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "FFR_r",
+            "Label": "Feed flow rate",
+            "Units": "l/h",
+            "Require": "*",
+            "Constraint": "<1111,>399",
+            "Tab": "VAGMD-batch"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "V0",
+            "Label": "Initial batch volume",
+            "Units": "L",
+            "Require": "*",
+            "Tab": "VAGMD-batch"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "Ttank",
+            "Label": "Initial temperature of feed water (Valid range: 20 to 30)",
+            "Units": "oC",
+            "Require": "*",
+            "Constraint": "<1101,>399",
+            "Tab": "VAGMD-batch"
+        },	
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "RR",
+            "Label": "Recovery rate (allowed maximum is shown in the Desalination Design Results)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "<1101,>399",
+            "Tab": "VAGMD-batch"
+        },
+        {
+            "DataType": "SSC_STRING",
+            "Name": "j",
+            "Label": "Type of cooling system ('o' for open circuit, 'c' for closed circuit",
+            "Units": "",
+            "Require": "*",
+            "Constraint": "<1101,>399",
+            "Tab": "VAGMD-batch"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "TCoolIn",
+            "Label": "Initial temperature of the cooling water (Valid range: < Feed water temperature)",
+            "Units": "oC",
+            "Require": "*",
+            "Constraint": "<1101,>399",
+            "Tab": "VAGMD-batch"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "dt",
+            "Label": "Time step for the simulation (Recommended range: 10 to 480)",
+            "Units": "second",
+            "Require": "*",
+            "Constraint": "<1101,>399",
+            "Tab": "VAGMD-batch"
+        }
+    ]
+}

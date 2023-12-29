@@ -1,0 +1,10 @@
+{
+    "queryStringParameters": {
+      "solar_model": "pvwattsv7",
+      "wind_model" : "wind",
+      "desalination_model": "RO",
+      "crystallization_model": null,
+      "financial_model": "lcoefcr",
+      "weather_file": null
+    }
+}

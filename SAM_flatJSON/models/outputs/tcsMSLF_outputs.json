@@ -1,0 +1,545 @@
+{
+    "Output": [
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "month",
+            "Label": "Resource Month",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "hour",
+            "Label": "Resource Hour of Day",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "solazi",
+            "Label": "Resource Solar Azimuth",
+            "Unit": "deg",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "solzen",
+            "Label": "Resource Solar Zenith",
+            "Unit": "deg",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "beam",
+            "Label": "Resource Beam normal irradiance",
+            "Unit": "W/m2",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "tdry",
+            "Label": "Resource Dry bulb temperature",
+            "Unit": "C",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "wspd",
+            "Label": "Resource Wind Speed",
+            "Unit": "m/s",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "twet",
+            "Label": "Resource Wet bulb temperature",
+            "Unit": "C",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "pres",
+            "Label": "Resource Pressure",
+            "Unit": "mbar",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "tou_value",
+            "Label": "Resource Time-of-use value",
+            "Group": "tou"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "theta_L",
+            "Label": "Field collector incidence angle - longitudinal",
+            "Unit": "deg",
+            "Group": "mslf"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "phi_t",
+            "Label": "Field collector incidence angle - transversal",
+            "Unit": "deg",
+            "Group": "mslf"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "eta_optical",
+            "Label": "Field collector optical efficiency",
+            "Group": "mslf"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "EqOptEff",
+            "Label": "Field collector and receiver optical efficiency",
+            "Group": "mslf"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "sf_def",
+            "Label": "Field collector focus fraction",
+            "Group": "mslf"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_inc_sf_tot",
+            "Label": "Field thermal power incident",
+            "Unit": "MWt",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_abs_tot",
+            "Label": "Field thermal power absorbed",
+            "Unit": "MWt",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_dump",
+            "Label": "Field thermal power dumped",
+            "Unit": "MWt",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_loss_tot",
+            "Label": "Field thermal power receiver loss",
+            "Unit": "MWt",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "Pipe_hl",
+            "Label": "Field thermal power header pipe losses",
+            "Unit": "MWt",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_avail",
+            "Label": "Field thermal power produced",
+            "Unit": "MWt",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_loss_spec_tot",
+            "Label": "Field thermal power avg. receiver loss",
+            "Unit": "W/m",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "eta_thermal",
+            "Label": "Field thermal efficiency",
+            "Group": "mslf"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "E_bal_startup",
+            "Label": "Field HTF energy inertial (consumed)",
+            "Unit": "MWht",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_avail",
+            "Label": "Field HTF mass flow rate total",
+            "Unit": "kg/hr",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_htf2",
+            "Label": "Field HTF mass flow rate loop",
+            "Unit": "kg/s",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "DP_tot",
+            "Label": "Field HTF pressure drop total",
+            "Unit": "bar",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_sys_c",
+            "Label": "Field HTF temperature cold header inlet",
+            "Unit": "C",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_sys_h",
+            "Label": "Field HTF temperature hot header outlet",
+            "Unit": "C",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "t_loop_outlet",
+            "Label": "Field HTF temperature loop outlet",
+            "Unit": "C",
+            "Group": "mslf"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "mass_tank_cold",
+            "Label": "TES HTF mass in cold tank",
+            "Unit": "kg",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "mass_tank_hot",
+            "Label": "TES HTF mass in hot tank",
+            "Unit": "kg",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_charge_field",
+            "Label": "TES HTF mass flow rate - field side of HX",
+            "Unit": "kg/hr",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_discharge_tank",
+            "Label": "TES HTF mass flow rate - storage side of HX",
+            "Unit": "kg/hr",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_tank_cold_fin",
+            "Label": "TES HTF temperature in cold tank",
+            "Unit": "C",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_tank_hot_fin",
+            "Label": "TES HTF temperature in hot tank",
+            "Unit": "C",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "Ts_hot",
+            "Label": "TES HTF temperature HX field side hot",
+            "Unit": "C",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "Ts_cold",
+            "Label": "TES HTF temperature HX field side cold",
+            "Unit": "C",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_tank_hot_in",
+            "Label": "TES HTF temperature hot tank inlet",
+            "Unit": "C",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_tank_cold_in",
+            "Label": "TES HTF temperature cold tank inlet",
+            "Unit": "C",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "vol_tank_cold_fin",
+            "Label": "TES HTF volume in cold tank",
+            "Unit": "m3",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "vol_tank_hot_fin",
+            "Label": "TES HTF volume in hot tank",
+            "Unit": "m3",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "vol_tank_total",
+            "Label": "TES HTF volume total",
+            "Unit": "m3",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_to_tes",
+            "Label": "TES thermal energy into storage",
+            "Unit": "MWt",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "tank_losses",
+            "Label": "TES thermal losses from tank(s)",
+            "Unit": "MWt",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "eta",
+            "Label": "Cycle efficiency (gross)",
+            "Group": "Type224"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "W_net",
+            "Label": "Cycle electrical power output (net)",
+            "Unit": "MWe",
+            "Group": "Net_E_Calc"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "P_cycle",
+            "Label": "Cycle electrical power output (gross)",
+            "Unit": "MWe",
+            "Group": "Net_E_Calc"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_pb",
+            "Label": "Cycle HTF mass flow rate",
+            "Unit": "kg/hr",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_pb_in",
+            "Label": "Cycle HTF temperature in (hot)",
+            "Unit": "C",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_pb_out",
+            "Label": "Cycle HTF temperature out (cold)",
+            "Unit": "C",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_makeup",
+            "Label": "Cycle cooling water mass flow rate - makeup",
+            "Unit": "kg/hr",
+            "Group": "Type224"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_pb",
+            "Label": "Cycle thermal power input",
+            "Unit": "MWt",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "pipe_sgs_diams",
+            "Label": "Pipe diameters in SGS",
+            "Unit": "m",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "pipe_sgs_wallthk",
+            "Label": "Pipe wall thickness in SGS",
+            "Unit": "m",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "pipe_sgs_mdot_dsn",
+            "Label": "Mass flow SGS pipes at design conditions",
+            "Unit": "kg/s",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "pipe_sgs_vel_dsn",
+            "Label": "Velocity in SGS pipes at design conditions",
+            "Unit": "m/s",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "pipe_sgs_T_dsn",
+            "Label": "Temperature in SGS pipes at design conditions",
+            "Unit": "C",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "pipe_sgs_P_dsn",
+            "Label": "Pressure in SGS pipes at design conditions",
+            "Unit": "bar",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_aux_fuel",
+            "Label": "Fossil fuel usage (all subsystems)",
+            "Unit": "MMBTU",
+            "Group": "Outputs"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "W_dot_pump",
+            "Label": "Parasitic power solar field HTF pump",
+            "Unit": "MWe",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "htf_pump_power",
+            "Label": "Parasitic power TES and Cycle HTF pump",
+            "Unit": "MWe",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "track_par_tot",
+            "Label": "Parasitic power field collector drives",
+            "Unit": "MWe",
+            "Group": "Type250"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "W_par_BOP",
+            "Label": "Parasitic power generation-dependent load",
+            "Unit": "MWe",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "fixed_par",
+            "Label": "Parasitic power fixed load",
+            "Unit": "MWe",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "W_par_aux_boiler",
+            "Label": "Parasitic power auxiliary heater operation",
+            "Unit": "MWe",
+            "Group": "Type251"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "W_cool_par",
+            "Label": "Parasitic power condenser operation",
+            "Unit": "MWe",
+            "Group": "Type224"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "Q_par_sf_fp",
+            "Label": "Parasitic thermal field freeze protection",
+            "Unit": "MWt",
+            "Group": "SumCalc"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "Q_par_tes_fp",
+            "Label": "Parasitic thermal TES freeze protection",
+            "Unit": "MWt",
+            "Group": "SumCalc"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "monthly_energy",
+            "Label": "Monthly Energy",
+            "Unit": "kWh",
+            "Group": "mslf"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_energy",
+            "Label": "Annual Energy",
+            "Unit": "kWh",
+            "Group": "mslf"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_W_cycle_gross",
+            "Label": "Electrical source - Power cycle gross output",
+            "Unit": "kWh",
+            "Group": "mslf"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "conversion_factor",
+            "Label": "Gross to Net Conversion Factor",
+            "Unit": "%",
+            "Group": "Calculated"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "capacity_factor",
+            "Label": "Capacity factor",
+            "Unit": "%"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "kwh_per_kw",
+            "Label": "First year kWh/kW",
+            "Unit": "kWh/kW"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "system_heat_rate",
+            "Label": "System heat rate",
+            "Unit": "MMBtu/MWh"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_fuel_usage",
+            "Label": "Annual fuel usage",
+            "Unit": "kWh"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_total_water_use",
+            "Label": "Total Annual Water Usage: cycle + mirror washing",
+            "Unit": "m3",
+            "Group": "PostProcess"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "gen",
+            "Label": "System power generated",
+            "Unit": "kW",
+            "Group": "Time Series"
+        }
+    ]
+}

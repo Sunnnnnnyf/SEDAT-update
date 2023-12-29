@@ -1,0 +1,101 @@
+{
+    "OARO": [
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "yrs",
+            "Label": "Plant lifetime",
+            "Units": "yrs",
+            "Require": "*",
+			"Tab": "Desalination"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "int_rate",
+            "Label": "Average interest rate",
+            "Units": "",
+            "Require": "*",
+			"Tab": "Desalination"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "downtime",
+            "Label": "Annual downtime percentage",
+            "Units": "%",
+            "Require": "*",
+			"Tab": "Desalination"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "coe",
+            "Label": "Unit cost of electricity from the grid (LCOE)",
+            "Units": "$/kWh",
+            "Require": "",
+			"Tab": "Desalination"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "solar_coe",
+            "Label": "Unit cost of electricity from solar field (LCOE) (Input value to overwrite LCOE calculated from solar field)",
+            "Units": "$/kWh",
+            "Require": "",
+			"Tab": "Desalination"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "oaro_cost",
+            "Label": "Specialized membrane cost",
+            "Units": "$/m2",
+            "Require": "",
+			"Tab": "Desalination"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "ro_cost",
+            "Label": "Conventional membrane cost",
+            "Units": "$/m2",
+            "Require": "",
+			"Tab": "Desalination"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "chem_cost",
+            "Label": "Specific chemical cost",
+            "Units": "$/m3",
+            "Require": "",
+			"Tab": "Desalination"
+        },		
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "labor_cost",
+            "Label": "Specific labor cost",
+            "Units": "$/m3",
+            "Require": "",
+			"Tab": "Desalination"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "rep_rate",
+            "Label": "Membrane replacement rate",
+            "Units": "",
+            "Require": "",
+			"Tab": "Desalination"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "practical_inv_factor",
+            "Label": "Practical investment factor ",
+            "Units": "",
+            "Require": "",
+			"Tab": "Desalination"
+        },	
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cost_storage",
+            "Label": "Cost of thermal storage",
+            "Units": "$/kWh",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination"
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "RO": [
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "yrs",
+            "Label": "Plant lifetime",
+            "Units": "yrs",
+            "Require": "*",
+			"Tab": "Desalination"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "int_rate",
+            "Label": "Average interest rate",
+            "Units": "",
+            "Require": "*",
+			"Tab": "Desalination"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "downtime",
+            "Label": "Annual downtime percentage",
+            "Units": "%",
+            "Require": "*",
+			"Tab": "Desalination"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "coe",
+            "Label": "Unit cost of electricity from the grid (LCOE)",
+            "Units": "$/kWh",
+            "Require": "",
+			"Tab": "Desalination"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "solar_coe",
+            "Label": "Unit cost of electricity from solar field (LCOE) (Input value to overwrite LCOE calculated from solar field)",
+            "Units": "$/kWh",
+            "Require": "",
+			"Tab": "Desalination"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "chem_cost",
+            "Label": "Specific chemical cost",
+            "Units": "$/m3",
+            "Require": "",
+			"Tab": "Desalination"
+        },		
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "labor_cost",
+            "Label": "Specific labor cost",
+            "Units": "$/m3",
+            "Require": "",
+			"Tab": "Desalination"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "rep_rate",
+            "Label": "Membrane replacement rate",
+            "Units": "",
+            "Require": "",
+			"Tab": "Desalination"
+        },	
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "unit_capex_main",
+            "Label": "Total EPC cost for RO (Calculated as a function of capacity from the design model, unless specified)",
+            "Units": "$/(m3/day)",
+            "Require": "*",
+			"Tab": "Desalination"
+        },	
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "unit_capex_passes",
+            "Label": "Total EPC cost for additional passes (same as above, unless specified)",
+            "Units": "$/(m3/day)",
+            "Require": "*",
+			"Tab": "Desalination"
+        },	
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cost_storage",
+            "Label": "Battery cost",
+            "Units": "$/kWh",
+            "Require": "*",
+			"Tab": "Desalination"
+        },	
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "disposal_cost",
+            "Label": "Specific waste disposal cost",
+            "Units": "$/m3",
+            "Require": "",
+			"Tab": "Desalination"
+        },	
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "IX_cost",
+            "Label": "LCOW increment for adding ion-exchange",
+            "Units": "$/m3",
+            "Require": "",
+			"Tab": "Desalination"
+        }
+    ]
+}

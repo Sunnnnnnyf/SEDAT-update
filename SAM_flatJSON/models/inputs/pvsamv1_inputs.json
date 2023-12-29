@@ -1,0 +1,4454 @@
+{
+    "pvsamv1": [
+        {
+            "DataType": "SSC_STRING",
+            "Name": "file_name",
+            "Label": "Weather file in TMY2, TMY3, EPW, or SAM CSV.",
+            "Require": "?",
+            "Tab": "Location and Resource"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "transformer_no_load_loss",
+            "Label": "Power transformer no load loss",
+            "Units": "%",
+            "Require": "?=0",
+            "Tab": "Losses",
+            "Section": "Transformer Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "transformer_load_loss",
+            "Label": "Power transformer load loss",
+            "Units": "%",
+            "Require": "?=0",
+            "Tab": "Losses",
+            "Section": "Transformer Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "system_use_lifetime_output",
+            "Label": "PV lifetime simulation",
+            "Units": "0/1",
+            "Require": "?=0",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "analysis_period",
+            "Label": "Lifetime analysis period",
+            "Units": "years",
+            "Require": "system_use_lifetime_output=1",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "dc_degradation",
+            "Label": "Annual module degradation",
+            "Units": "%/year",
+            "Require": "system_use_lifetime_output=1",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "en_dc_lifetime_losses",
+            "Label": "Enable lifetime daily DC losses",
+            "Units": "0/1",
+            "Require": "?=0",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "dc_lifetime_losses",
+            "Label": "Lifetime daily DC losses",
+            "Units": "%",
+            "Require": "en_dc_lifetime_losses=1",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "en_ac_lifetime_losses",
+            "Label": "Enable lifetime daily AC losses",
+            "Units": "0/1",
+            "Require": "?=0",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "ac_lifetime_losses",
+            "Label": "Lifetime daily AC losses",
+            "Units": "%",
+            "Require": "en_ac_lifetime_losses=1",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "en_snow_model",
+            "Label": "Input 1 to enable snow loss estimation",
+            "Units": "0/1",
+            "Require": "?=0",
+            "Constraints": "BOOLEAN",
+            "Tab": "Shading and Layout",
+            "Section": "Snow Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "system_capacity",
+            "Label": "DC Nameplate capacity (Automatically calculated)",
+            "Units": "kWdc",
+            "Require": "*",
+            "Tab": "System Design",
+            "Section": "Sizing Summary"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "total_AC_capacity",
+            "Label": "Total AC capacity  (Automatically calculated)",
+            "Units": "kWac",
+            "Require": "*",
+            "Tab": "System Design",
+            "Section": "Sizing Summary"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "DC_to_AC",
+            "Label": "DC to AC ratio  (Automatically calculated)",
+            "Units": "",
+            "Require": "*",
+            "Tab": "System Design",
+            "Section": "Sizing Summary"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "use_wf_albedo",
+            "Label": "Use albedo in weather file if provided",
+            "Units": "0/1",
+            "Require": "?=1",
+            "Constraints": "BOOLEAN",
+            "Tab": "Location and Resource",
+            "Section": "Albedo -Sky Diffuse Model (Advanced)",
+            "Subsection": "Albedo"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "albedo",
+            "Label": "User specified monthly ground albedo",
+            "Units": "0..1",
+            "Require": "*",
+            "Constraints": "LENGTH=12",
+            "Tab": "Location and Resource",
+            "Section": "Albedo -Sky Diffuse Model (Advanced)",
+            "Subsection": "Albedo"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "irrad_mode",
+            "Label": "Irradiance input translation mode (Please check user mannual for input)",
+            "Require": "?=0",
+            "Constraints": "INTEGER,MIN=0,MAX=4",
+            "Tab": "Location and Resource",
+            "Section": "Weather File Irradiance Data"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sky_model",
+            "Label": "Diffuse sky model (0: Isotropic, 1: HDKR, 2: Perez)",
+            "Require": "?=2",
+            "Constraints": "INTEGER,MIN=0,MAX=2",
+            "Tab": "Location and Resource",
+            "Section": "Sky Diffuse Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inverter_count",
+            "Label": "Number of inverters",
+            "Require": "*",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "System Design",
+            "Section": "AC Sizing"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "enable_mismatch_vmax_calc",
+            "Label": "Input 1 to calculate maximum power voltage for array and associated losses due to subarray mismatch (CEC and IEC 61853 models only)",
+            "Require": "?=0",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "PV Subarray Voltage Mismatch"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_nstrings",
+            "Label": "Sub-array 1 strings in parallel",
+            "Constraints": "INTEGER",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_modules_per_string",
+            "Label": "Sub-array 1 modules per string",
+            "Require": "*",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_mppt_input",
+            "Label": "Sub-array 1 Inverter MPPT input number",
+            "Require": "?=1",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_tilt",
+            "Label": "Sub-array 1 Tilt",
+            "Units": "deg",
+            "Constraints": "MIN=0,MAX=90",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_tilt_eq_lat",
+            "Label": "Sub-array 1 (Input 1 to have tilt = latitude)",
+            "Units": "0/1",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_azimuth",
+            "Label": "Sub-array 1 Azimuth",
+            "Units": "deg",
+            "Constraints": "MIN=0,MAX=359.9",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_track_mode",
+            "Label": "Sub-array 1 Tracking mode (0: Fixed, 1: One axis, Check user mannual for more input)",
+            "Require": "*",
+            "Constraints": "INTEGER,MIN=0,MAX=4",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_rotlim",
+            "Label": "Sub-array 1 Tracker rotation limit",
+            "Units": "deg",
+            "Require": "?=45",
+            "Constraints": "MIN=0,MAX=85",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_shade_mode",
+            "Label": "Sub-array 1 shading mode (0: None, 1: Standard (non-linear), 2: Thin film (linear))",
+            "Units": "0/1/2",
+            "Require": "*",
+            "Constraints": "INTEGER,MIN=0,MAX=2",
+            "Tab": "Shading and Layout",
+            "Section": "Self Shading for Fixed Subarrays and One-axis Trackers"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_gcr",
+            "Label": "Sub-array 1 Ground coverage ratio",
+            "Units": "0..1",
+            "Require": "?=0.3",
+            "Constraints": "MIN=0,MAX=3",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "subarray1_monthly_tilt",
+            "Label": "Sub-array 1 monthly tilt input (for seasonal tilt only)",
+            "Units": "deg",
+            "Require": "subarray1_track_mode=4",
+            "Constraints": "LENGTH=12",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_shading:string_option",
+            "Label": "Sub-array 1 shading string option",
+            "Require": "?=-1",
+            "Constraints": "INTEGER,MIN=-1,MAX=4",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray1_shading:timestep",
+            "Label": "Sub-array 1 timestep beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray1_shading:mxh",
+            "Label": "Sub-array 1 Month x Hour beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray1_shading:azal",
+            "Label": "Sub-array 1 Azimuth x altitude beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_shading:diff",
+            "Label": "Sub-array 1 Diffuse shading loss",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "subarray1_soiling",
+            "Label": "Sub-array 1 Monthly soiling loss",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "LENGTH=12",
+            "Tab": "Losses",
+            "Section": "Irradiance Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_rear_irradiance_loss",
+            "Label": "Sub-array 1 rear irradiance loss",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_mismatch_loss",
+            "Label": "Sub-array 1 DC mismatch loss",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_diodeconn_loss",
+            "Label": "Sub-array 1 DC diodes and connections loss",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_dcwiring_loss",
+            "Label": "Sub-array 1 DC wiring loss",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_tracking_loss",
+            "Label": "Sub-array 1 DC tracking error loss",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_nameplate_loss",
+            "Label": "Sub-array 1 DC nameplate loss",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "MIN=-5,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_rear_irradiance_loss",
+            "Label": "Sub-array 2 rear irradiance loss",
+            "Units": "%",
+            "Require": "subarray2_enable=1",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_mismatch_loss",
+            "Label": "Sub-array 2 DC mismatch loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_diodeconn_loss",
+            "Label": "Sub-array 2 DC diodes and connections loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_dcwiring_loss",
+            "Label": "Sub-array 2 DC wiring loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_tracking_loss",
+            "Label": "Sub-array 2 DC tracking error loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_nameplate_loss",
+            "Label": "Sub-array 2 DC nameplate loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=-5,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_rear_irradiance_loss",
+            "Label": "Sub-array 3 rear irradiance loss",
+            "Units": "%",
+            "Require": "subarray3_enable=1",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_mismatch_loss",
+            "Label": "Sub-array 3 DC mismatch loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_diodeconn_loss",
+            "Label": "Sub-array 3 DC diodes and connections loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_dcwiring_loss",
+            "Label": "Sub-array 3 DC wiring loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_tracking_loss",
+            "Label": "Sub-array 3 DC tracking error loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_nameplate_loss",
+            "Label": "Sub-array 3 DC nameplate loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=-5,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_rear_irradiance_loss",
+            "Label": "Sub-array 4 rear irradiance loss",
+            "Units": "%",
+            "Require": "subarray4_enable=1",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_mismatch_loss",
+            "Label": "Sub-array 4 DC mismatch loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_diodeconn_loss",
+            "Label": "Sub-array 4 DC diodes and connections loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_dcwiring_loss",
+            "Label": "Sub-array 4 DC wiring loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_tracking_loss",
+            "Label": "Sub-array 4 DC tracking error loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_nameplate_loss",
+            "Label": "Sub-array 4 DC nameplate loss",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "MIN=-5,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "dcoptimizer_loss",
+            "Label": "DC power optimizer loss",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "acwiring_loss",
+            "Label": "AC wiring loss",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "AC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "transmission_loss",
+            "Label": "Transmission loss",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "MIN=0,MAX=100",
+            "Tab": "Losses",
+            "Section": "Transmission Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_mod_orient",
+            "Label": "Sub-array 1 Module orientation (0: Portrait, 1: Landscape)",
+            "Units": "0/1",
+            "Require": "*",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_nmodx",
+            "Label": "Sub-array 1 Number of modules along bottom of row",
+            "Require": "*",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_nmody",
+            "Label": "Sub-array 1 Number of modules along side of row",
+            "Require": "*",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray1_backtrack",
+            "Label": "Sub-array 1 Input 1 to enable backtracking (for 1 Axis)",
+            "Require": "subarray1_track_mode=1",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_enable",
+            "Label": "Sub-array 2 Enable",
+            "Units": "0/1",
+            "Require": "?=0",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_modules_per_string",
+            "Label": "Sub-array 2 Modules per string",
+            "Require": "subarray2_enable=1",
+            "Constraints": "INTEGER,MIN=1",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_nstrings",
+            "Label": "Sub-array 2 Number of parallel strings",
+            "Require": "subarray2_enable=1",
+            "Constraints": "INTEGER,MIN=1",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_mppt_input",
+            "Label": "Sub-array 2 Inverter MPPT input number",
+            "Require": "?=1",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_tilt",
+            "Label": "Sub-array 2 Tilt",
+            "Units": "deg",
+            "Constraints": "MIN=0,MAX=90",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_tilt_eq_lat",
+            "Label": "Sub-array 2 (Input 1 to have tilt = latitude)",
+            "Units": "0/1",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_azimuth",
+            "Label": "Sub-array 2 Azimuth",
+            "Units": "deg",
+            "Constraints": "MIN=0,MAX=359.9",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_track_mode",
+            "Label": "Sub-array 2 Tracking mode (0: Fixed, 1: One axis, Check user mannual for more input)",
+            "Require": "subarray2_enable=1",
+            "Constraints": "INTEGER,MIN=0,MAX=4",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_rotlim",
+            "Label": "Sub-array 2 Tracker rotation limit",
+            "Units": "deg",
+            "Require": "?=45",
+            "Constraints": "MIN=0,MAX=85",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_shade_mode",
+            "Label": "Sub-array 2 Shading mode (0: None, 1: Standard (non-linear), 2: Thin film (linear))",
+            "Units": "0/1/2",
+            "Require": "subarray2_enable=1",
+            "Constraints": "INTEGER,MIN=0,MAX=2",
+            "Tab": "Shading and Layout",
+            "Section": "Self Shading for Fixed Subarrays and One-axis Trackers"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_gcr",
+            "Label": "Sub-array 2 Ground coverage ratio",
+            "Units": "0..1",
+            "Require": "?=0.3",
+            "Constraints": "MIN=0,MAX=3",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "subarray2_monthly_tilt",
+            "Label": "Sub-array 2 Monthly tilt input",
+            "Units": "deg",
+            "Constraints": "LENGTH=12",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_shading:string_option",
+            "Label": "Sub-array 2 Shading string option",
+            "Require": "?=-1",
+            "Constraints": "INTEGER,MIN=-1,MAX=4",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray2_shading:timestep",
+            "Label": "Sub-array 2 Timestep beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray2_shading:mxh",
+            "Label": "Sub-array 2 Month x Hour beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray2_shading:azal",
+            "Label": "Sub-array 2 Azimuth x altitude beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_shading:diff",
+            "Label": "Sub-array 2 Diffuse shading loss",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "subarray2_soiling",
+            "Label": "Sub-array 2 Monthly soiling loss",
+            "Units": "%",
+            "Require": "subarray2_enable=1",
+            "Constraints": "LENGTH=12",
+            "Tab": "Losses",
+            "Section": "Irradiance Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_mod_orient",
+            "Label": "Sub-array 2 Module orientation",
+            "Units": "0/1",
+            "Require": "subarray2_enable=1",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_nmodx",
+            "Label": "Sub-array 2 Number of modules along bottom of row",
+            "Require": "subarray2_enable=1",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_nmody",
+            "Label": "Sub-array 2 Number of modules along side of row",
+            "Require": "subarray2_enable=1",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray2_backtrack",
+            "Label": "Sub-array 2 Backtracking enabled",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_enable",
+            "Label": "Sub-array 3 Enable",
+            "Units": "0/1",
+            "Require": "?=0",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_modules_per_string",
+            "Label": "Sub-array 3 Modules per string",
+            "Require": "subarray3_enable=1",
+            "Constraints": "INTEGER,MIN=1",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_nstrings",
+            "Label": "Sub-array 3 Number of parallel strings",
+            "Require": "subarray3_enable=1",
+            "Constraints": "INTEGER,MIN=1",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_mppt_input",
+            "Label": "Sub-array 3 Inverter MPPT input number",
+            "Require": "?=1",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_tilt",
+            "Label": "Sub-array 3 Tilt",
+            "Units": "deg",
+            "Constraints": "MIN=0,MAX=90",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_tilt_eq_lat",
+            "Label": "Sub-array 3 (Input 1 to have tilt = latitude)",
+            "Units": "0/1",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_azimuth",
+            "Label": "Sub-array 3 Azimuth",
+            "Units": "deg",
+            "Constraints": "MIN=0,MAX=359.9",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_track_mode",
+            "Label": "Sub-array 3 Tracking mode (0: Fixed, 1: One axis, Check user mannual for more input)",
+            "Require": "subarray3_enable=1",
+            "Constraints": "INTEGER,MIN=0,MAX=4",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_rotlim",
+            "Label": "Sub-array 3 Tracker rotation limit",
+            "Units": "deg",
+            "Require": "?=45",
+            "Constraints": "MIN=0,MAX=85",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_shade_mode",
+            "Label": "Sub-array 3 Shading mode (0: None, 1: Standard (non-linear), 2: Thin film (linear))",
+            "Units": "0/1/2",
+            "Require": "subarray3_enable=1",
+            "Constraints": "INTEGER,MIN=0,MAX=2",
+            "Tab": "Shading and Layout",
+            "Section": "Self Shading for Fixed Subarrays and One-axis Trackers"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_gcr",
+            "Label": "Sub-array 3 Ground coverage ratio",
+            "Units": "0..1",
+            "Require": "?=0.3",
+            "Constraints": "MIN=0,MAX=3",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "subarray3_monthly_tilt",
+            "Label": "Sub-array 3 Monthly tilt input",
+            "Units": "deg",
+            "Constraints": "LENGTH=12",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_shading:string_option",
+            "Label": "Sub-array 3 Shading string option",
+            "Require": "?=-1",
+            "Constraints": "INTEGER,MIN=-1,MAX=4",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray3_shading:timestep",
+            "Label": "Sub-array 3 Timestep beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray3_shading:mxh",
+            "Label": "Sub-array 3 Month x Hour beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray3_shading:azal",
+            "Label": "Sub-array 3 Azimuth x altitude beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_shading:diff",
+            "Label": "Sub-array 3 Diffuse shading loss",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "subarray3_soiling",
+            "Label": "Sub-array 3 Monthly soiling loss",
+            "Units": "%",
+            "Require": "subarray3_enable=1",
+            "Constraints": "LENGTH=12",
+            "Tab": "Losses",
+            "Section": "Irradiance Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_mod_orient",
+            "Label": "Sub-array 3 Module orientation",
+            "Units": "0/1",
+            "Require": "subarray3_enable=1",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_nmodx",
+            "Label": "Sub-array 3 Number of modules along bottom of row",
+            "Require": "subarray3_enable=1",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_nmody",
+            "Label": "Sub-array 3 Number of modules along side of row",
+            "Require": "subarray3_enable=1",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray3_backtrack",
+            "Label": "Sub-array 3 Backtracking enabled",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_enable",
+            "Label": "Sub-array 4 Enable",
+            "Units": "0/1",
+            "Require": "?=0",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_modules_per_string",
+            "Label": "Sub-array 4 Modules per string",
+            "Require": "subarray4_enable=1",
+            "Constraints": "INTEGER,MIN=1",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_nstrings",
+            "Label": "Sub-array 4 Number of parallel strings",
+            "Require": "subarray4_enable=1",
+            "Constraints": "INTEGER,MIN=1",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_mppt_input",
+            "Label": "Sub-array 4 Inverter MPPT input number",
+            "Require": "?=1",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Electrical Configuration"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_tilt",
+            "Label": "Sub-array 4 Tilt",
+            "Units": "deg",
+            "Constraints": "MIN=0,MAX=90",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_tilt_eq_lat",
+            "Label": "Sub-array 4 (Input 1 to have tilt = latitude)",
+            "Units": "0/1",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_azimuth",
+            "Label": "Sub-array 4 Azimuth",
+            "Units": "deg",
+            "Constraints": "MIN=0,MAX=359.9",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_track_mode",
+            "Label": "Sub-array 4 Tracking mode (0: Fixed, 1: One axis, Check user mannual for more input)",
+            "Require": "subarray4_enable=1",
+            "Constraints": "INTEGER,MIN=0,MAX=4",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_rotlim",
+            "Label": "Sub-array 4 Tracker rotation limit",
+            "Units": "deg",
+            "Require": "?=45",
+            "Constraints": "MIN=0,MAX=85",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_shade_mode",
+            "Label": "Sub-array 4 shading mode (0: None, 1: Standard (non-linear), 2: Thin film (linear))",
+            "Units": "0/1/2",
+            "Require": "subarray4_enable=1",
+            "Constraints": "INTEGER,MIN=0,MAX=2",
+            "Tab": "Shading and Layout",
+            "Section": "Self Shading for Fixed Subarrays and One-axis Trackers"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_gcr",
+            "Label": "Sub-array 4 Ground coverage ratio",
+            "Units": "0..1",
+            "Require": "?=0.3",
+            "Constraints": "MIN=0,MAX=3",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "subarray4_monthly_tilt",
+            "Label": "Sub-array 4 Monthly tilt input",
+            "Units": "deg",
+            "Constraints": "LENGTH=12",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_shading:string_option",
+            "Label": "Sub-array 4 Shading string option",
+            "Require": "?=-1",
+            "Constraints": "INTEGER,MIN=-1,MAX=4",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray4_shading:timestep",
+            "Label": "Sub-array 4 Timestep beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray4_shading:mxh",
+            "Label": "Sub-array 4 Month x Hour beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "subarray4_shading:azal",
+            "Label": "Sub-array 4 Azimuth x altitude beam shading losses",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_shading:diff",
+            "Label": "Sub-array 4 Diffuse shading loss",
+            "Units": "%",
+            "Require": "?",
+            "Tab": "Other Settings "
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "subarray4_soiling",
+            "Label": "Sub-array 4 Monthly soiling loss",
+            "Units": "%",
+            "Require": "subarray4_enable=1",
+            "Constraints": "LENGTH=12",
+            "Tab": "Losses",
+            "Section": "Irradiance Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_mod_orient",
+            "Label": "Sub-array 4 Module orientation",
+            "Units": "0/1",
+            "Require": "subarray4_enable=1",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_nmodx",
+            "Label": "Sub-array 4 Number of modules along bottom of row",
+            "Require": "subarray4_enable=1",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_nmody",
+            "Label": "Sub-array 4 Number of modules along side of row",
+            "Require": "subarray4_enable=1",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "subarray4_backtrack",
+            "Label": "Sub-array 4 Backtracking enabled",
+            "Constraints": "BOOLEAN",
+            "Tab": "System Design",
+            "Section": "DC Sizing and Configuration",
+            "Subsection": "Tracking & Orientation"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "module_model",
+            "Label": "Photovoltaic module model specifier",
+            "Require": "*",
+            "Constraints": "INTEGER,MIN=0,MAX=5",
+            "Tab": "Other Settings ",
+            "Section": "Module model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "module_aspect_ratio",
+            "Label": "Module aspect ratio",
+            "Require": "?=1.7",
+            "Tab": "Shading and Layout",
+            "Section": "Array Dimensions for Self Shading, Snow Losses and Bifacial Modules"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_area",
+            "Label": "Module area",
+            "Units": "m2",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_rad0",
+            "Label": "Irradiance level 0",
+            "Units": "W/m2",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_rad1",
+            "Label": "Irradiance level 1",
+            "Units": "W/m2",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_rad2",
+            "Label": "Irradiance level 2",
+            "Units": "W/m2",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_rad3",
+            "Label": "Irradiance level 3",
+            "Units": "W/m2",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_rad4",
+            "Label": "Irradiance level 4",
+            "Units": "W/m2",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_eff0",
+            "Label": "Efficiency at irradiance level 0",
+            "Units": "%",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_eff1",
+            "Label": "Efficiency at irradiance level 1",
+            "Units": "%",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_eff2",
+            "Label": "Efficiency at irradiance level 2",
+            "Units": "%",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_eff3",
+            "Label": "Efficiency at irradiance level 3",
+            "Units": "%",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_eff4",
+            "Label": "Efficiency at irradiance level 4",
+            "Units": "%",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_reference",
+            "Label": "Reference irradiance level",
+            "Require": "module_model=0",
+            "Constraints": "INTEGER,MIN=0,MAX=4",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_module_structure",
+            "Label": "Mounting and module structure",
+            "Require": "module_model=0",
+            "Constraints": "INTEGER,MIN=0,MAX=5",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_a",
+            "Label": "Cell temp parameter a",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_b",
+            "Label": "Cell temp parameter b",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_dT",
+            "Label": "Cell temp parameter dT",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_temp_coeff",
+            "Label": "Temperature coefficient",
+            "Units": "%/C",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_fd",
+            "Label": "Diffuse fraction",
+            "Units": "0..1",
+            "Require": "module_model=0",
+            "Constraints": "MIN=0,MAX=1",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_vmp",
+            "Label": "Nominal max power voltage",
+            "Units": "V",
+            "Require": "module_model=0",
+            "Constraints": "POSITIVE",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_voc",
+            "Label": "Nominal open circuit voltage",
+            "Units": "V",
+            "Require": "module_model=0",
+            "Constraints": "POSITIVE",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_is_bifacial",
+            "Label": "Modules are bifacial",
+            "Units": "0/1",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_bifacial_transmission_factor",
+            "Label": "Bifacial transmission factor",
+            "Units": "0-1",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_bifaciality",
+            "Label": "Bifaciality factor",
+            "Units": "%",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "spe_bifacial_ground_clearance_height",
+            "Label": "Module ground clearance height",
+            "Units": "m",
+            "Require": "module_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Simplified Module Efficiency Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_area",
+            "Label": "Module area",
+            "Units": "m2",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Physical Characteristics"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_a_ref",
+            "Label": "Nonideality factor a",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Other Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_adjust",
+            "Label": "Temperature coefficient adjustment",
+            "Units": "%",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Other Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_alpha_sc",
+            "Label": "Short circuit current temperature coefficient",
+            "Units": "A/C",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_beta_oc",
+            "Label": "Open circuit voltage temperature coefficient",
+            "Units": "V/C",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_gamma_r",
+            "Label": "Maximum power point temperature coefficient",
+            "Units": "%/C",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_i_l_ref",
+            "Label": "Light current",
+            "Units": "A",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_i_mp_ref",
+            "Label": "Maximum power point current (Imp)",
+            "Units": "A",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_i_o_ref",
+            "Label": "Saturation current",
+            "Units": "A",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Other Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_i_sc_ref",
+            "Label": "Short circuit current (Isc)",
+            "Units": "A",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_n_s",
+            "Label": "Number of cells in series",
+            "Require": "module_model=1",
+            "Constraints": "POSITIVE",
+            "Tab": "Module",
+            "Section": "Physical Characteristics"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_r_s",
+            "Label": "Series resistance",
+            "Units": "ohm",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Other Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_r_sh_ref",
+            "Label": "Shunt resistance",
+            "Units": "ohm",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Other Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_t_noct",
+            "Label": "Nominal operating cell temperature",
+            "Units": "C",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Other Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_v_mp_ref",
+            "Label": "Maximum power point voltage (Vmp)",
+            "Units": "V",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_v_oc_ref",
+            "Label": "Open circuit voltage (Voc)",
+            "Units": "V",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_temp_corr_mode",
+            "Label": "Cell temperature model (0: NOCT method, 1: Heat transfer method)",
+            "Require": "module_model=1",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Module",
+            "Section": "Temperature Correction"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_is_bifacial",
+            "Label": "Input 1 if module is bifacial",
+            "Units": "0/1",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions",
+            "Subsection": "Bifacial Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_bifacial_transmission_factor",
+            "Label": "Bifacial transmission factor",
+            "Units": "0-1",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions",
+            "Subsection": "Bifacial Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_bifaciality",
+            "Label": "Bifaciality factor",
+            "Units": "%",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions",
+            "Subsection": "Bifacial Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_bifacial_ground_clearance_height",
+            "Label": "Module ground clearance height",
+            "Units": "m",
+            "Require": "module_model=1",
+            "Tab": "Module",
+            "Section": "Module Characteristics at Reference Conditions",
+            "Subsection": "Bifacial Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_standoff",
+            "Label": "Standoff mode (Check user mannual for input)",
+            "Require": "module_model=1",
+            "Constraints": "INTEGER,MIN=0,MAX=6",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "NOCT Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_height",
+            "Label": "Array mounting height (Check user mannual for input)",
+            "Require": "module_model=1",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "NOCT Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_mounting_config",
+            "Label": "Mounting configuration",
+            "Require": "module_model=1&cec_temp_corr_mode=1",
+            "Constraints": "INTEGER,MIN=0,MAX=3",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "Heat Transfer Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_heat_transfer",
+            "Label": "Heat transfer dimensions",
+            "Require": "module_model=1&cec_temp_corr_mode=1",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "Heat Transfer Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_mounting_orientation",
+            "Label": "Mounting structure orientation",
+            "Require": "module_model=1&cec_temp_corr_mode=1",
+            "Constraints": "INTEGER,MIN=0,MAX=2",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "Heat Transfer Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_gap_spacing",
+            "Label": "Gap spacing",
+            "Units": "m",
+            "Require": "module_model=1&cec_temp_corr_mode=1",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "Heat Transfer Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_module_width",
+            "Label": "Module width",
+            "Units": "m",
+            "Require": "module_model=1&cec_temp_corr_mode=1",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "Heat Transfer Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_module_length",
+            "Label": "Module height",
+            "Units": "m",
+            "Require": "module_model=1&cec_temp_corr_mode=1",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "Heat Transfer Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_array_rows",
+            "Label": "Rows of modules in array",
+            "Require": "module_model=1&cec_temp_corr_mode=1",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "Heat Transfer Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_array_cols",
+            "Label": "Columns of modules in array",
+            "Require": "module_model=1&cec_temp_corr_mode=1",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "Heat Transfer Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cec_backside_temp",
+            "Label": "Module backside temperature",
+            "Units": "C",
+            "Require": "module_model=1&cec_temp_corr_mode=1",
+            "Constraints": "POSITIVE",
+            "Tab": "Module",
+            "Section": "Temperature Correction",
+            "Subsection": "Heat Transfer Method Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_celltech",
+            "Label": "Solar cell technology type",
+            "Require": "module_model=2",
+            "Constraints": "INTEGER,MIN=0,MAX=5",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_vmp",
+            "Label": "Maximum power point voltage",
+            "Units": "V",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_imp",
+            "Label": "Imp",
+            "Units": "A",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_voc",
+            "Label": "Voc",
+            "Units": "V",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_isc",
+            "Label": "Isc",
+            "Units": "A",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_bvoc",
+            "Label": "Open circuit voltage temperature coefficient",
+            "Units": "V/C",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_aisc",
+            "Label": "Short circuit current temperature coefficient",
+            "Units": "A/C",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_gpmp",
+            "Label": "Maximum power point temperature coefficient",
+            "Units": "%/C",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_nser",
+            "Label": "Nseries",
+            "Require": "module_model=2",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_area",
+            "Label": "Module area",
+            "Units": "m2",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_tnoct",
+            "Label": "Nominal operating cell temperature",
+            "Units": "C",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_standoff",
+            "Label": "Standoff mode",
+            "Require": "module_model=2",
+            "Constraints": "INTEGER,MIN=0,MAX=6",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_mounting",
+            "Label": "Array mounting height",
+            "Require": "module_model=2",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_is_bifacial",
+            "Label": "Modules are bifacial",
+            "Units": "0/1",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_bifacial_transmission_factor",
+            "Label": "Bifacial transmission factor",
+            "Units": "0-1",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_bifaciality",
+            "Label": "Bifaciality factor",
+            "Units": "%",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "6par_bifacial_ground_clearance_height",
+            "Label": "Module ground clearance height",
+            "Units": "m",
+            "Require": "module_model=2",
+            "Tab": "Other Settings ",
+            "Section": "CEC Performance Model with User Entered Specifications"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_module_structure",
+            "Label": "Module and mounting structure configuration",
+            "Require": "module_model=3",
+            "Constraints": "INTEGER,MIN=0,MAX=6",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_a",
+            "Label": "Temperature coefficient a",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_b",
+            "Label": "Temperature coefficient b",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_dtc",
+            "Label": "Temperature coefficient dT",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_ref_a",
+            "Label": "User-specified a",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_ref_b",
+            "Label": "User-specified b",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_ref_dT",
+            "Label": "User-specified dT",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_fd",
+            "Label": "Diffuse fraction",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_a0",
+            "Label": "Air mass polynomial coeff 0",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_a1",
+            "Label": "Air mass polynomial coeff 1",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_a2",
+            "Label": "Air mass polynomial coeff 2",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_a3",
+            "Label": "Air mass polynomial coeff 3",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_a4",
+            "Label": "Air mass polynomial coeff 4",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_aimp",
+            "Label": "Max power point current temperature coefficient",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_aisc",
+            "Label": "Short circuit current temperature coefficient",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_area",
+            "Label": "Module area",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_b0",
+            "Label": "Incidence angle modifier polynomial coeff 0",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_b1",
+            "Label": "Incidence angle modifier polynomial coeff 1",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_b2",
+            "Label": "Incidence angle modifier polynomial coeff 2",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_b3",
+            "Label": "Incidence angle modifier polynomial coeff 3",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_b4",
+            "Label": "Incidence angle modifier polynomial coeff 4",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_b5",
+            "Label": "Incidence angle modifier polynomial coeff 5",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_bvmpo",
+            "Label": "Max power point voltage temperature coefficient",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_bvoco",
+            "Label": "Open circuit voltage temperature coefficient",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_c0",
+            "Label": "C0",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_c1",
+            "Label": "C1",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_c2",
+            "Label": "C2",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_c3",
+            "Label": "C3",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_c4",
+            "Label": "C4",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_c5",
+            "Label": "C5",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_c6",
+            "Label": "C6",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_c7",
+            "Label": "C7",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_impo",
+            "Label": "Max power point current",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_isco",
+            "Label": "Short circuit current",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_ixo",
+            "Label": "Ix midpoint current",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_ixxo",
+            "Label": "Ixx midpoint current",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_mbvmp",
+            "Label": "Irradiance dependence of Vmp temperature coefficient",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_mbvoc",
+            "Label": "Irradiance dependence of Voc temperature coefficient",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_n",
+            "Label": "Diode factor",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_series_cells",
+            "Label": "Number of cells in series",
+            "Require": "module_model=3",
+            "Constraints": "INTEGER",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_vmpo",
+            "Label": "Max power point voltage",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "snl_voco",
+            "Label": "Open circuit voltage",
+            "Require": "module_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Sandia PV Array Performance Model with Module Database"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_nser",
+            "Label": "Nseries",
+            "Require": "module_model=4",
+            "Constraints": "INTEGER,POSITIVE",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_area",
+            "Label": "Module area",
+            "Units": "m2",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_AMa0",
+            "Label": "Air mass modifier coeff 0",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_AMa1",
+            "Label": "Air mass modifier coeff 1",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_AMa2",
+            "Label": "Air mass modifier coeff 2",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_AMa3",
+            "Label": "Air mass modifier coeff 3",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_AMa4",
+            "Label": "Air mass modifier coeff 4",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_glass",
+            "Label": "Module cover glass type",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_tnoct",
+            "Label": "Nominal operating cell temperature",
+            "Units": "C",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_standoff",
+            "Label": "Standoff mode",
+            "Require": "module_model=4",
+            "Constraints": "INTEGER,MIN=0,MAX=6",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_mounting",
+            "Label": "Array mounting height",
+            "Require": "module_model=4",
+            "Constraints": "INTEGER,MIN=0,MAX=1",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_Vmp0",
+            "Label": "Vmp (STC)",
+            "Units": "V",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_Imp0",
+            "Label": "Imp (STC)",
+            "Units": "A",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_Voc0",
+            "Label": "Voc (STC)",
+            "Units": "V",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_Isc0",
+            "Label": "Isc (STC)",
+            "Units": "A",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_alphaIsc",
+            "Label": "Short curcuit current temperature coefficient",
+            "Units": "A/C",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_n",
+            "Label": "Diode nonideality factor",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_Il",
+            "Label": "Light current",
+            "Units": "A",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_Io",
+            "Label": "Saturation current",
+            "Units": "A",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_Egref",
+            "Label": "Bandgap voltage",
+            "Units": "eV",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_d1",
+            "Label": "Rs fit parameter 1",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_d2",
+            "Label": "Rs fit parameter 2",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_d3",
+            "Label": "Rs fit parameter 3",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_c1",
+            "Label": "Rsh fit parameter 1",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_c2",
+            "Label": "Rsh fit parameter 2",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "sd11par_c3",
+            "Label": "Rsh fit parameter 3",
+            "Require": "module_model=4",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_N_series",
+            "Label": "Number of cells in series",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_N_parallel",
+            "Label": "Number of cells in parallel",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_N_diodes",
+            "Label": "Number of diodes",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_Width",
+            "Label": "Module width (short side)",
+            "Units": "m",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_Length",
+            "Label": "Module length (long side)",
+            "Units": "m",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_V_mp_ref",
+            "Label": "V_mp at STC",
+            "Units": "V",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_I_mp_ref",
+            "Label": "I_mp at STC",
+            "Units": "A",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_V_oc_ref",
+            "Label": "V_oc at STC",
+            "Units": "V",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_I_sc_ref",
+            "Label": "I_sc at STC",
+            "Units": "A",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_S_ref",
+            "Label": "Reference irradiance (Typically 1000W/m2)",
+            "Units": "W/m2",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_T_ref",
+            "Label": "Reference temperature (Typically 25 C)",
+            "Units": "C",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_R_shref",
+            "Label": "Reference shunt resistance",
+            "Units": "V/A",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_R_sh0",
+            "Label": "Rsh,0",
+            "Units": "V/A",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_R_shexp",
+            "Label": "Rsh exponential coefficient",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_R_s",
+            "Label": "Series resistance",
+            "Units": "V/A",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_alpha_isc",
+            "Label": "Temperature coefficient for I_sc",
+            "Units": "A/K",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_beta_voc_spec",
+            "Label": "Temperature coefficient for V_oc",
+            "Units": "V/K",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_E_g",
+            "Label": "Reference bandgap energy",
+            "Units": "eV",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_n_0",
+            "Label": "Gamma",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_mu_n",
+            "Label": "Temperature coefficient of gamma",
+            "Units": "1/K",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_D2MuTau",
+            "Label": "Coefficient for recombination losses",
+            "Units": "V",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_T_mode",
+            "Label": "Cell temperature model mode",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_T_c_no_tnoct",
+            "Label": "NOCT cell temperature",
+            "Units": "C",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_T_c_no_mounting",
+            "Label": "NOCT Array mounting height",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_T_c_no_standoff",
+            "Label": "NOCT standoff mode",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_T_c_fa_alpha",
+            "Label": "Extended Faiman model absorptivity",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_T_c_fa_U0",
+            "Label": "Extended Faiman model U_0",
+            "Units": "W/m K",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_T_c_fa_U1",
+            "Label": "Extended Faiman model U_1",
+            "Units": "W/m sK",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_mode",
+            "Label": "Air-mass modifier mode",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_sa0",
+            "Label": "Coefficient 0 for Sandia Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_sa1",
+            "Label": "Coefficient 1 for Sandia Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_sa2",
+            "Label": "Coefficient 2 for Sandia Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_sa3",
+            "Label": "Coefficient 3 for Sandia Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_sa4",
+            "Label": "Coefficient 4 for Sandia Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_lp0",
+            "Label": "Coefficient 0 for Lee/Panchula Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_lp1",
+            "Label": "Coefficient 1 for Lee/Panchula Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_lp2",
+            "Label": "Coefficient 2 for Lee/Panchula Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_lp3",
+            "Label": "Coefficient 3 for Lee/Panchula Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_lp4",
+            "Label": "Coefficient 4 for Lee/Panchula Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_AM_c_lp5",
+            "Label": "Coefficient 5 for Lee/Panchula Air Mass Modifier",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_IAM_mode",
+            "Label": "Incidence Angle Modifier mode",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_IAM_c_as",
+            "Label": "ASHRAE incidence modifier coefficient b_0",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_IAM_c_sa0",
+            "Label": "Sandia IAM coefficient 0",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_IAM_c_sa1",
+            "Label": "Sandia IAM coefficient 1",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_IAM_c_sa2",
+            "Label": "Sandia IAM coefficient 2",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_IAM_c_sa3",
+            "Label": "Sandia IAM coefficient 3",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_IAM_c_sa4",
+            "Label": "Sandia IAM coefficient 4",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_IAM_c_sa5",
+            "Label": "Sandia IAM coefficient 5",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "mlm_IAM_c_cs_incAngle",
+            "Label": "Spline IAM - Incidence angles",
+            "Units": "deg",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "mlm_IAM_c_cs_iamValue",
+            "Label": "Spline IAM - IAM values",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mlm_groundRelfectionFraction",
+            "Label": "Ground reflection fraction",
+            "Units": "-",
+            "Require": "module_model=5",
+            "Tab": "Other Settings ",
+            "Section": "IEC61853 Single Diode Model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inverter_model",
+            "Label": "Inverter model specifier",
+            "Require": "*",
+            "Constraints": "INTEGER,MIN=0,MAX=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter model"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mppt_low_inverter",
+            "Label": "Minimum MPPT DC voltage",
+            "Units": "Vdc",
+            "Require": "?=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "mppt_hi_inverter",
+            "Label": "Maximum MPPT DC voltage",
+            "Units": "Vdc",
+            "Require": "?=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_num_mppt",
+            "Label": "Number of MPPT inputs",
+            "Require": "?=1",
+            "Constraints": "INTEGER,MIN=0,MAX=4",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_c0",
+            "Label": "C0",
+            "Units": "1/W",
+            "Require": "inverter_model=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Sandia Coefficients"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_c1",
+            "Label": "C1",
+            "Units": "1/V",
+            "Require": "inverter_model=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Sandia Coefficients"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_c2",
+            "Label": "C2",
+            "Units": "1/V",
+            "Require": "inverter_model=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Sandia Coefficients"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_c3",
+            "Label": "C3",
+            "Units": "1/V",
+            "Require": "inverter_model=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Sandia Coefficients"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_paco",
+            "Label": "Maximum AC power",
+            "Units": "Wac",
+            "Require": "inverter_model=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_pdco",
+            "Label": "Maximum DC power",
+            "Units": "Wdc",
+            "Require": "inverter_model=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_pnt",
+            "Label": "Power use at night",
+            "Units": "Wac",
+            "Require": "inverter_model=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_pso",
+            "Label": "Power use during operation",
+            "Units": "Wdc",
+            "Require": "inverter_model=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_vdco",
+            "Label": "Nominal DC voltage",
+            "Units": "Vdc",
+            "Require": "inverter_model=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_vdcmax",
+            "Label": "Maximum DC voltage",
+            "Units": "Vdc",
+            "Require": "inverter_model=0",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_c0",
+            "Label": "Curvature between AC power and DC power at ref",
+            "Units": "1/W",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Part Load Curve"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_c1",
+            "Label": "Coefficient of Pdco variation with DC input voltage",
+            "Units": "1/V",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Part Load Curve"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_c2",
+            "Label": "Coefficient of Pso variation with DC input voltage",
+            "Units": "1/V",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Part Load Curve"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_c3",
+            "Label": "Coefficient of Co variation with DC input voltage",
+            "Units": "1/V",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Part Load Curve"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_paco",
+            "Label": "AC maximum power rating",
+            "Units": "Wac",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Part Load Curve"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_pdco",
+            "Label": "DC input power at which AC power rating is achieved",
+            "Units": "Wdc",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Part Load Curve"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_pnt",
+            "Label": "AC power consumed by inverter at night",
+            "Units": "Wac",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Part Load Curve"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_psco",
+            "Label": "DC power required to enable the inversion process",
+            "Units": "Wdc",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Part Load Curve"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_vdco",
+            "Label": "DC input voltage for the rated AC power rating",
+            "Units": "Vdc",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Part Load Curve"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_vdcmax",
+            "Label": "Maximum DC input operating voltage",
+            "Units": "Vdc",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Part Load Curve"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_ds_paco",
+            "Label": "AC maximum power rating",
+            "Units": "Wac",
+            "Require": "inverter_model=1",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_ds_eff",
+            "Label": "Weighted or Peak or Nominal Efficiency",
+            "Units": "Wdc",
+            "Require": "inverter_model=1",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_ds_pnt",
+            "Label": "AC power consumed by inverter at night",
+            "Units": "Wac",
+            "Require": "inverter_model=1",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_ds_pso",
+            "Label": "DC power required to enable the inversion process",
+            "Units": "Wdc",
+            "Require": "inverter_model=1",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_ds_vdco",
+            "Label": "DC input voltage for the rated AC power rating",
+            "Units": "Vdc",
+            "Require": "inverter_model=1",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_ds_vdcmax",
+            "Label": "Maximum DC input operating voltage",
+            "Units": "Vdc",
+            "Require": "inverter_model=1",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_pd_paco",
+            "Label": "AC maximum power rating",
+            "Units": "Wac",
+            "Require": "inverter_model=2",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_pd_pdco",
+            "Label": "DC input power at which AC power rating is achieved",
+            "Units": "Wdc",
+            "Require": "inverter_model=2",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "inv_pd_partload",
+            "Label": "Partload curve partload values",
+            "Units": "%",
+            "Require": "inverter_model=2",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "inv_pd_efficiency",
+            "Label": "Partload curve efficiency values",
+            "Units": "%",
+            "Require": "inverter_model=2",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_pd_pnt",
+            "Label": "AC power consumed by inverter at night",
+            "Units": "Wac",
+            "Require": "inverter_model=2",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_pd_vdco",
+            "Label": "DC input voltage for the rated AC power rating",
+            "Units": "Vdc",
+            "Require": "inverter_model=2",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_pd_vdcmax",
+            "Label": "Maximum DC input operating voltage",
+            "Units": "Vdc",
+            "Require": "inverter_model=2",
+            "Tab": "Other Settings ",
+            "Section": "Inverter Datasheet"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_PNomConv",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_PMaxOUT",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_VOutConv",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_VMppMin",
+            "Units": "V",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_VMPPMax",
+            "Units": "V",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_VAbsMax",
+            "Units": "V",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_PSeuil",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_STRING",
+            "Name": "ond_ModeOper",
+            "Units": "-",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_STRING",
+            "Name": "ond_CompPMax",
+            "Units": "-",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_STRING",
+            "Name": "ond_CompVMax",
+            "Units": "-",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_STRING",
+            "Name": "ond_ModeAffEnum",
+            "Units": "-",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_PNomDC",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_PMaxDC",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_IMaxDC",
+            "Units": "A",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_INomDC",
+            "Units": "A",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_INomAC",
+            "Units": "A",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_IMaxAC",
+            "Units": "A",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_TPNom",
+            "Units": "C",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_TPMax",
+            "Units": "C",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_TPLim1",
+            "Units": "C",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_TPLimAbs",
+            "Units": "C",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_PLim1",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_PLimAbs",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "ond_VNomEff",
+            "Units": "V",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_NbInputs",
+            "Units": "-",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_NbMPPT",
+            "Units": "-",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_Aux_Loss",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_Night_Loss",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_lossRDc",
+            "Units": "V/A",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_lossRAc",
+            "Units": "A",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_effCurve_elements",
+            "Units": "-",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "ond_effCurve_Pdc",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "ond_effCurve_Pac",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "ond_effCurve_eta",
+            "Units": "-",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_Aux_Loss",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_Aux_Loss",
+            "Units": "W",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_doAllowOverpower",
+            "Units": "-",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ond_doUseTemperatureLimit",
+            "Units": "-",
+            "Require": "inverter_model=4",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "inv_tdc_cec_db",
+            "Label": "Temperature derate curves for CEC Database",
+            "Units": "Vdc",
+            "Require": "inverter_model=0",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "inv_tdc_cec_cg",
+            "Label": "Temperature derate curves for CEC Coef Gen",
+            "Units": "Vdc",
+            "Require": "inverter_model=3",
+            "Tab": "Other Settings ",
+            "Section": "Inverter CEC Coefficient Generator"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "inv_tdc_ds",
+            "Label": "Temperature derate curves for Inv Datasheet [Vdc(V), Tstart (C), Slope (%/C)",
+            "Units": "Vdc",
+            "Require": "inverter_model=1",
+            "Tab": "Inverter",
+            "Section": "Inverter Temperature Derate Curves"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "inv_tdc_plc",
+            "Label": "Temperature derate curves for Part Load Curve",
+            "Units": "C",
+            "Require": "inverter_model=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "en_batt",
+            "Label": "Enable battery storage model",
+            "Units": "0/1",
+            "Require": "?=0",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "load",
+            "Label": "Electricity load (year 1)",
+            "Units": "kW",
+            "Require": "?",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "adjust:constant",
+            "Label": "Constant loss adjustment",
+            "Units": "%",
+            "Require": "*",
+            "Constraints": "MAX=100",
+            "Tab": "System Availability",
+            "Section": "AC Losses"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "adjust:hourly",
+            "Label": "Hourly loss adjustments",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "LENGTH=8760",
+            "Tab": "System Availability",
+            "Section": "AC Losses"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "adjust:periods",
+            "Label": "Period-based loss adjustments",
+            "Units": "%",
+            "Require": "?",
+            "Constraints": "COLS=3",
+            "Tab": "System Availability",
+            "Section": "AC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "dc_adjust:constant",
+            "Label": "DC Constant loss adjustment",
+            "Units": "%",
+            "Constraints": "MAX=100",
+            "Tab": "System Availability",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "dc_adjust:hourly",
+            "Label": "DC Hourly loss adjustments",
+            "Units": "%",
+            "Constraints": "LENGTH=8760",
+            "Tab": "System Availability",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "dc_adjust:periods",
+            "Label": "DC Period-based loss adjustments",
+            "Units": "%",
+            "Constraints": "COLS=3",
+            "Tab": "System Availability",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_chem",
+            "Label": "Battery chemistry",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_eff_cec",
+            "Label": "Inverter Sandia CEC Efficiency",
+            "Units": "%",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_snl_paco",
+            "Label": "Inverter Sandia Maximum AC Power",
+            "Units": "Wac",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_ds_eff",
+            "Label": "Inverter Datasheet Efficiency",
+            "Units": "%",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_ds_paco",
+            "Label": "Inverter Datasheet Maximum AC Power",
+            "Units": "Wac",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_pd_eff",
+            "Label": "Inverter Partload Efficiency",
+            "Units": "%",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_pd_paco",
+            "Label": "Inverter Partload Maximum AC Power",
+            "Units": "Wac",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_eff_cec",
+            "Label": "Inverter Coefficient Generator CEC Efficiency",
+            "Units": "%",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "inv_cec_cg_paco",
+            "Label": "Inverter Coefficient Generator Max AC Power",
+            "Units": "Wac",
+            "Tab": "Inverter",
+            "Section": "Efficiency Curve and Characteristics",
+            "Subsection": "Datasheet Parameters"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_ac_or_dc",
+            "Label": "Battery interconnection (AC or DC)",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_dc_dc_efficiency",
+            "Label": "PV DC to battery DC efficiency",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "dcoptimizer_loss",
+            "Label": "DC power optimizer loss",
+            "Tab": "Losses",
+            "Section": "DC Losses"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_dc_ac_efficiency",
+            "Label": "Battery DC to AC efficiency",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_ac_dc_efficiency",
+            "Label": "Inverter AC to battery DC efficiency",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_meter_position",
+            "Label": "Position of battery relative to electric meter",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "batt_losses",
+            "Label": "Battery system losses at each timestep",
+            "Units": "kW",
+            "Require": "?=0",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "batt_losses_charging",
+            "Label": "Battery system losses when charging",
+            "Units": "kW",
+            "Require": "?=0",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "batt_losses_discharging",
+            "Label": "Battery system losses when discharging",
+            "Units": "kW",
+            "Require": "?=0",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "batt_losses_idle",
+            "Label": "Battery system losses when idle",
+            "Units": "kW",
+            "Require": "?=0",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_loss_choice",
+            "Label": "Loss power input option",
+            "Units": "0/1",
+            "Require": "?=0",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_current_choice",
+            "Label": "Limit cells by current or power",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_computed_strings",
+            "Label": "Number of strings of cells",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_computed_series",
+            "Label": "Number of cells in series",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_computed_bank_capacity",
+            "Label": "Computed bank capacity",
+            "Units": "kWh",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_current_charge_max",
+            "Label": "Maximum charge current",
+            "Units": "A",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_current_discharge_max",
+            "Label": "Maximum discharge current",
+            "Units": "A",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_power_charge_max",
+            "Label": "Maximum charge power",
+            "Units": "kW",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_power_discharge_max",
+            "Label": "Maximum discharge power",
+            "Units": "kW",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_voltage_choice",
+            "Label": "Battery voltage input option",
+            "Units": "0/1",
+            "Require": "?=0",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_Vfull",
+            "Label": "Fully charged cell voltage",
+            "Units": "V",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_Vexp",
+            "Label": "Cell voltage at end of exponential zone",
+            "Units": "V",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_Vnom",
+            "Label": "Cell voltage at end of nominal zone",
+            "Units": "V",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_Vnom_default",
+            "Label": "Default nominal cell voltage",
+            "Units": "V",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_Qfull",
+            "Label": "Fully charged cell capacity",
+            "Units": "Ah",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_Qfull_flow",
+            "Label": "Fully charged flow battery capacity",
+            "Units": "Ah",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_Qexp",
+            "Label": "Cell capacity at end of exponential zone",
+            "Units": "Ah",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_Qnom",
+            "Label": "Cell capacity at end of nominal zone",
+            "Units": "Ah",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_C_rate",
+            "Label": "Rate at which voltage vs. capacity curve input",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_resistance",
+            "Label": "Internal resistance",
+            "Units": "Ohm",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "batt_voltage_matrix",
+            "Label": "Battery voltage vs. depth-of-discharge",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "LeadAcid_q20_computed",
+            "Label": "Capacity at 20-hour discharge rate",
+            "Units": "Ah",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "LeadAcid_q10_computed",
+            "Label": "Capacity at 10-hour discharge rate",
+            "Units": "Ah",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "LeadAcid_qn_computed",
+            "Label": "Capacity at discharge rate for n-hour rate",
+            "Units": "Ah",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "LeadAcid_tn",
+            "Label": "Time to discharge",
+            "Units": "h",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_initial_SOC",
+            "Label": "Initial state-of-charge",
+            "Units": "%",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_minimum_SOC",
+            "Label": "Minimum allowed state-of-charge",
+            "Units": "%",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_maximum_SOC",
+            "Label": "Maximum allowed state-of-charge",
+            "Units": "%",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_minimum_modetime",
+            "Label": "Minimum time at charge state",
+            "Units": "min",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "batt_lifetime_matrix",
+            "Label": "Cycles vs capacity at different depths-of-discharge",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_calendar_choice",
+            "Label": "Calendar life degradation input option",
+            "Units": "0/1/2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "batt_calendar_lifetime_matrix",
+            "Label": "Days vs capacity",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_calendar_q0",
+            "Label": "Calendar life model initial capacity cofficient",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_calendar_a",
+            "Label": "Calendar life model coefficient",
+            "Units": "1/sqrt(day)",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_calendar_b",
+            "Label": "Calendar life model coefficient",
+            "Units": "K",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_calendar_c",
+            "Label": "Calendar life model coefficient",
+            "Units": "K",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_replacement_capacity",
+            "Label": "Capacity degradation at which to replace battery",
+            "Units": "%",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_replacement_option",
+            "Label": "Enable battery replacement?",
+            "Units": "0=none,1=capacity based,2=user schedule",
+            "Require": "?=0",
+            "Constraints": "INTEGER,MIN=0,MAX=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "batt_replacement_schedule",
+            "Label": "Battery bank replacements per year (user specified)",
+            "Units": "number/year",
+            "Require": "batt_replacement_option=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_replacement_cost",
+            "Label": "Cost to replace battery per kWh",
+            "Units": "$/kWh",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_mass",
+            "Label": "Battery mass",
+            "Units": "kg",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_length",
+            "Label": "Battery length",
+            "Units": "m",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_width",
+            "Label": "Battery width",
+            "Units": "m",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_height",
+            "Label": "Battery height",
+            "Units": "m",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_Cp",
+            "Label": "Battery specific heat capacity",
+            "Units": "J/KgK",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_h_to_ambient",
+            "Label": "Heat transfer between battery and environment",
+            "Units": "W/m2K",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "T_room",
+            "Label": "Temperature of storage room",
+            "Units": "C",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "cap_vs_temp",
+            "Label": "Effective capacity as function of temperature",
+            "Units": "C,%",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "dispatch_manual_charge",
+            "Label": "Periods 1-6 charging allowed?",
+            "Require": "en_batt=1&batt_dispatch_choice=4",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "dispatch_manual_discharge",
+            "Label": "Periods 1-6 discharging allowed?",
+            "Require": "en_batt=1&batt_dispatch_choice=4",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "dispatch_manual_gridcharge",
+            "Label": "Periods 1-6 grid charging allowed?",
+            "Require": "en_batt=1&batt_dispatch_choice=4",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "dispatch_manual_percent_discharge",
+            "Label": "Periods 1-6 discharge percent",
+            "Units": "%",
+            "Require": "en_batt=1&batt_dispatch_choice=4",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "dispatch_manual_percent_gridcharge",
+            "Label": "Periods 1-6 gridcharge percent",
+            "Units": "%",
+            "Require": "en_batt=1&batt_dispatch_choice=4",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "dispatch_manual_sched",
+            "Label": "Battery dispatch schedule for weekday",
+            "Require": "en_batt=1&batt_dispatch_choice=4",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "dispatch_manual_sched_weekend",
+            "Label": "Battery dispatch schedule for weekend",
+            "Require": "en_batt=1&batt_dispatch_choice=4",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "batt_target_power",
+            "Label": "Grid target power (AC) for every time step",
+            "Units": "kWac",
+            "Require": "en_batt=1&batt_meter_position=0&batt_dispatch_choice=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "batt_target_power_monthly",
+            "Label": "Grid target power (AC) on monthly basis",
+            "Units": "kWac",
+            "Require": "en_batt=1&batt_meter_position=0&batt_dispatch_choice=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_target_choice",
+            "Label": "Target power input option",
+            "Units": "0/1",
+            "Require": "en_batt=1&batt_meter_position=0&batt_dispatch_choice=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "batt_custom_dispatch",
+            "Label": "Custom battery power (DC) for every time step",
+            "Units": "kWdc",
+            "Require": "en_batt=1&batt_dispatch_choice=3",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_dispatch_choice",
+            "Label": "Battery dispatch algorithm",
+            "Units": "0/1/2/3/4",
+            "Require": "en_batt=1",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "batt_pv_clipping_forecast",
+            "Label": "PV clipping forecast",
+            "Units": "kW",
+            "Require": "en_batt=1&batt_meter_position=1&batt_dispatch_choice=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "batt_pv_dc_forecast",
+            "Label": "PV dc power forecast",
+            "Units": "kW",
+            "Require": "en_batt=1&batt_meter_position=1&batt_dispatch_choice=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_dispatch_auto_can_gridcharge",
+            "Label": "Grid charging allowed for automated dispatch?",
+            "Units": "kW",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_dispatch_auto_can_charge",
+            "Label": "PV charging allowed for automated dispatch?",
+            "Units": "kW",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_dispatch_auto_can_clipcharge",
+            "Label": "Battery can charge from clipped PV for automated dispatch?",
+            "Units": "kW",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_auto_gridcharge_max_daily",
+            "Label": "Allowed grid charging percent per day for automated dispatch",
+            "Units": "kW",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_look_ahead_hours",
+            "Label": "Hours to look ahead in automated dispatch",
+            "Units": "hours",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_dispatch_update_frequency_hours",
+            "Label": "Frequency to update the look-ahead dispatch",
+            "Units": "hours",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_cycle_cost_choice",
+            "Label": "Use SAM model for cycle costs or input custom",
+            "Units": "0/1",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "batt_cycle_cost",
+            "Label": "Input battery cycle costs",
+            "Units": "$/cycle-kWh",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "en_electricity_rates",
+            "Label": "Enable Electricity Rates",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "ur_ec_sched_weekday",
+            "Label": "Energy charge weekday schedule",
+            "Require": "en_batt=1&batt_meter_position=1&batt_dispatch_choice=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "ur_ec_sched_weekend",
+            "Label": "Energy charge weekend schedule",
+            "Require": "en_batt=1&batt_meter_position=1&batt_dispatch_choice=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "ur_ec_tou_mat",
+            "Label": "Energy rates table",
+            "Require": "en_batt=1&batt_meter_position=1&batt_dispatch_choice=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ppa_price_input",
+            "Label": "PPA Price Input",
+            "Require": "en_batt=1&batt_meter_position=1&batt_dispatch_choice=2",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "ppa_multiplier_model",
+            "Label": "PPA multiplier model",
+            "Units": "0/1",
+            "Require": "?=0",
+            "Constraints": "INTEGER,MIN=0",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "dispatch_factors_ts",
+            "Label": "Dispatch payment factor time step",
+            "Require": "en_batt=1&batt_meter_position=1&batt_dispatch_choice=2&ppa_multiplier_model=1",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_ARRAY",
+            "Name": "dispatch_tod_factors",
+            "Label": "TOD factors for periods 1-9",
+            "Require": "en_batt=1&batt_meter_position=1&batt_dispatch_choice=2&ppa_multiplier_model=0",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "dispatch_sched_weekday",
+            "Label": "Diurnal weekday TOD periods",
+            "Units": "1..9",
+            "Require": "en_batt=1&batt_meter_position=1&batt_dispatch_choice=2&ppa_multiplier_model=0",
+			"Tab":"Auxiliary (Not used)"
+        },
+        {
+            "DataType": "SSC_MATRIX",
+            "Name": "dispatch_sched_weekend",
+            "Label": "Diurnal weekend TOD periods",
+            "Units": "1..9",
+            "Require": "en_batt=1&batt_meter_position=1&batt_dispatch_choice=2&ppa_multiplier_model=0",
+			"Tab":"Auxiliary (Not used)"
+        }
+    ]
+}

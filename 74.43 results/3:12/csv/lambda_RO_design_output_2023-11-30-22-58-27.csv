@@ -1,0 +1,13 @@
+Location,  AZ
+Desal technology,Reverse Osmosis (RO) - Grid Integrated   
+Solar technology,Photovoltaic (PVWatts)
+
+Name,Value,Unit
+Actual capacity of the system,50286.59999999999,m3/day
+Estimated EPC cost,1727,$ per m3/day
+Final permeate salinity,83.54137521891273,mg/L
+Number of vessels,307,
+Number of elements per vessel,6,
+Brine concentration,58.2776390831874,g/L
+Electric energy requirement,7876.889489254026,kW(e)
+Specific energy consumption,3.780906954841932,kWh(e)/m3

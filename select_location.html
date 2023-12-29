@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SEDAT</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 400px 100px;
+  gap: 10px;
+}
+
+</style>
+</head>
+<body>
+<!-- Load the `mapbox-gl-geocoder` plugin. -->
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+<div class="wrapper">
+    <div class="map" id="map"></div>
+
+        <div id="inputs">
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude" value="" />
+            <br/>
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude" value="" />
+            <br/>
+            <button class="button" id="btn" disabled=true  onclick="LookupLocation()">View site properties</button>
+        </div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiZ3lldG1hbiIsImEiOiJjanRhdDU1ejEwZHl3NDRsY3NuNDRhYXd1In0.uOqHLjY8vJEVndoGbugWWg';
+            const map = new mapboxgl.Map({
+                container: 'map',
+                // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+                style: 'mapbox://styles/mapbox/streets-v12',
+                center: [-112.0, 33.5],
+                zoom: 5
+            });
+        
+            var marker = new mapboxgl.Marker();
+            var lat = "";
+            var lng = "";
+            
+            function add_marker (event) {
+            var coordinates = event.lngLat;
+            //console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
+            marker.setLngLat(coordinates).addTo(map);
+            // add lat & long to the form inputs
+            document.getElementById('latitude').setAttribute('value', coordinates.lat);
+            document.getElementById('longitude').setAttribute('value', coordinates.lng);
+            // enable the submit button
+            document.getElementById("btn").disabled=false;
+            //geocoder.mapMarker.remove();
+            if (geocoder.mapMarker !== null){
+                geocoder.mapMarker.remove();
+            };
+            }
+            
+            map.on('click', add_marker);
+        
+        
+            // Add the search tool to the map.
+            geocoder = new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                mapboxgl: mapboxgl
+            });
+        
+            map.addControl(
+                geocoder);
+        
+            // get the geocoder result 
+            geocoder.on('result', function(e) {
+                result = geocoder.mapMarker;
+                //console.log(result._lngLat.lng);
+                // add lat & long to the form inputs
+                document.getElementById('latitude').setAttribute('value', result._lngLat.lat);
+                document.getElementById('longitude').setAttribute('value', result._lngLat.lng);
+                // remove the marker from clicking
+                marker.remove();
+                // enable the submit button
+                document.getElementById("btn").disabled=false;
+            })
+
+            
+
+            function LookupLocation() {
+                // first disable the button
+                // document.getElementById("btn").disabled=true;
+                // get the lat & lng
+                query_lat = document.getElementById("latitude").value.trim();
+                query_lng = document.getElementById("longitude").value.trim();
+                url = "https://i00sb4zl8g.execute-api.us-west-2.amazonaws.com/default/sedat-locationl?latitude="+query_lat+"&longitude="+query_lng;
+                //console.log(url);
+                var headers = {
+                    origin:"https://myfiosgateway.com"
+                }
+                console.log('submitting request');
+                fetch(url,{
+                    method: "GET",
+                    mode: "cors",
+                    headers: headers
+                    
+                })
+                    .then((response) => response.text())
+                    .then((text) => {document.getElementById("results").innerHTML = (JSON.stringify(text))});
+                    //                    .then((json) => console.log(json))
+                    // enable the button for model
+                    document.getElementById("model_btn").disabled=false;
+                    // re-enable the button
+                    // document.getElementById("btn").disabled=false;
+                    
+            }
+
+            function RunModel(){
+                // TODO: update from post to get! 
+                console.log("running model...")
+                solar_model = document.getElementById("solar_model").value;
+                desalination_model = document.getElementById("desalination_model").value;
+                crystallization_model = document.getElementById("crystallization_model").value;
+                FeedC_r = document.getElementById("FeedC_r").value;
+
+                const headers = {
+                    origin:"https://myfiosgateway.com",
+                    InvocationType:"Event", 
+                    mode:'cors'
+                };
+                url="https://793xxndz8l.execute-api.us-west-2.amazonaws.com/alpha/sedat/"
+                const params = {
+                    "solar_model=":solar_model,
+                    "desalination_model":desalination_model,
+                    "crystallization_model":crystallization_model,
+                    "FeedC_r=":FeedC_r
+                };
+                const options = {
+                    method: 'POST',
+                    body: JSON.stringify(params),
+                    headers:headers
+                };
+                url = url + 
+                console.log(url);
+                fetch(url,options)
+                    .then((response) => response.text())
+                    .then((text) => {document.getElementById("results").innerHTML = (JSON.stringify(text))});
+                    //                    .then((json) => console.log(json))
+                    // enable the button for model
+                    document.getElementById("model_btn").disabled=false;
+                    // re-enable the button
+                    // document.getElementById("btn").disabled=false;
+            }
+        </script>
+        Site Details <br/>
+    <div id="results">
+<!--          
+    </div>
+    <div id="model">
+        <label for="solar_model">Solar Model:</label>
+        <select name="solar_model" id="solar_model">
+            <option value="SC_ETC">SC_ETC</option>
+            <option value="SC_ETC">SC_ETC</option>
+          </select>
+        <br/>
+        <label for="desalination_model">Desalination Model:</label>
+        <select name="desalination_model" id="desalination_model">
+            <option value="MEDTVC">MEDTVC</option>
+            <option value="MEDTVC">MEDTVC</option>
+        </select>
+        <br/>
+        <label for="crystallization_model">Crystallization Model:</label>
+        <select name="crystallization_model" id="crystallization_model">
+            <option value="Crystallization">Crystallization</option>
+            <option value="Crystallization">None</option>
+        </select>
+        <br/> 
+        <label for="crystallizer_yield">Crystallizer Yield</label>
+        <input type="text" name="crystallizer_yield" id="crystallizer_yield" value=".9">
+        <br/>
+        <label for="feed_temperature">Crystallizer Feed Temperature</label>
+        <input type="text" name="feed_temperature" id="feed_temperature" value="25">
+        <br/>
+        <!--TODO: system size default value from json
+        also, look up the variable name. -->
+        <label for="solar_system_size">Solar System Size:</label>
+        <input type="text" id="solar_system_size" name="solar_system_size" value="0" />
+        <br/>      
+        <label for="desal_system_size">Desalination System Size:</label>
+        <input type="text" id="desal_system_size" name="desal_system_size" value="0" />
+        <br/>   
+        <label for="FeedC_r">Feed Water Salinity:</label>
+        <input type="text" id="FeedC_r" name="FeedC_r" value="35" />
+        <br/>
+        <button class="button" id="model_btn" disabled=true onclick="RunModel()">Run Model</button>
+    </div>
+</div> -->
+
+</body>
+</html>
+

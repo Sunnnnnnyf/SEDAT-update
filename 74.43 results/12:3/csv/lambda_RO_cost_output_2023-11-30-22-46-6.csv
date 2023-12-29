@@ -1,0 +1,12 @@
+Location,  AZ
+Desal technology,Reverse Osmosis (RO) - Grid Integrated   
+Solar technology,Photovoltaic (PVWatts)
+
+Name,Value,Unit
+Desal Annualized CAPEX,0.38713494626700934,$/m3
+Desal OPEX,0.5290424769756286,$/m3
+Levelized cost of water,0.9161774232426378,$/m3
+Levelized cost of electricity (from fossile fuel),0.05,$/m3
+Levelized cost of electricity (from solar field),0.09173820261922536,$/m3
+Levelized cost of electricity (from wind field),3.606070995164547e-05,$/m3
+Energy cost,0.2470025045738507,$/m3

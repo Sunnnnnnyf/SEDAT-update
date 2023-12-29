@@ -1,0 +1,36 @@
+{
+    "OARO": [
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Capacity",
+            "Label": "Plant capacity",
+            "Units": "m3/day",
+            "Require": "*",
+            "Constraint": ""
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "FeedC_r",
+            "Label": "Feed concentration (Acceptable values are 20, 35, 70 and 125 g/L)",
+            "Units": "g/L",
+            "Require": "*",
+            "Constraint": "20,35 or 70"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "rr",
+            "Label": "Recovery rate mode (Input '1': max recovery rate towards ZLD, input '2':  lower recovery rate)",
+            "Units": "",
+            "Require": "*",
+            "Constraint": ">0"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "storage_hour",
+            "Label": "Battery storage hours",
+            "Units": "hour",
+            "Require": "*",
+            "Constraint": ">0"
+        }
+    ]
+}

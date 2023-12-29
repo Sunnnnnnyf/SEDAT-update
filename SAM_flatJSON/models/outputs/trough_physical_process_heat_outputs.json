@@ -1,0 +1,439 @@
+{
+    "Output": [
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "time_hr",
+            "Label": "Time at end of timestep",
+            "Unit": "hr",
+            "Group": "Solver"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "month",
+            "Label": "Resource Month",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "hour_day",
+            "Label": "Resource Hour of Day",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "solazi",
+            "Label": "Resource Solar Azimuth",
+            "Unit": "deg",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "solzen",
+            "Label": "Resource Solar Zenith",
+            "Unit": "deg",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "beam",
+            "Label": "Resource Beam normal irradiance",
+            "Unit": "W/m2",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "tdry",
+            "Label": "Resource Dry bulb temperature",
+            "Unit": "C",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "twet",
+            "Label": "Resource Wet bulb temperature",
+            "Unit": "C",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "wspd",
+            "Label": "Resource Wind Speed",
+            "Unit": "m/s",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "pres",
+            "Label": "Resource Pressure",
+            "Unit": "mbar",
+            "Group": "weather"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "Theta_ave",
+            "Label": "Field collector solar incidence angle",
+            "Unit": "deg",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "CosTh_ave",
+            "Label": "Field collector cosine efficiency",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "IAM_ave",
+            "Label": "Field collector incidence angle modifier",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "RowShadow_ave",
+            "Label": "Field collector row shadowing loss",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "EndLoss_ave",
+            "Label": "Field collector optical end loss",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "dni_costh",
+            "Label": "Field collector DNI-cosine product",
+            "Unit": "W/m2",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "EqOpteff",
+            "Label": "Field optical efficiency before defocus",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "SCAs_def",
+            "Label": "Field fraction of focused SCAs",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_inc_sf_tot",
+            "Label": "Field thermal power incident",
+            "Unit": "MWt",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "qinc_costh",
+            "Label": "Field thermal power incident after cosine",
+            "Unit": "MWt",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_dot_rec_inc",
+            "Label": "Receiver thermal power incident",
+            "Unit": "MWt",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_dot_rec_thermal_loss",
+            "Label": "Receiver thermal losses",
+            "Unit": "MWt",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_dot_rec_abs",
+            "Label": "Receiver thermal power absorbed",
+            "Unit": "MWt",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_dot_piping_loss",
+            "Label": "Field piping thermal losses",
+            "Unit": "MWt",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "e_dot_field_int_energy",
+            "Label": "Field change in material/htf internal energy",
+            "Unit": "MWt",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_dot_htf_sf_out",
+            "Label": "Field thermal power leaving in HTF",
+            "Unit": "MWt",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_dot_freeze_prot",
+            "Label": "Field freeze protection required",
+            "Unit": "MWt",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_loop",
+            "Label": "Receiver mass flow rate",
+            "Unit": "kg/s",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_field_recirc",
+            "Label": "Field total mass flow recirculated",
+            "Unit": "kg/s",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_field_delivered",
+            "Label": "Field total mass flow delivered",
+            "Unit": "kg/s",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_field_cold_in",
+            "Label": "Field timestep-averaged inlet temperature",
+            "Unit": "C",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_rec_cold_in",
+            "Label": "Loop timestep-averaged inlet temperature",
+            "Unit": "C",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_rec_hot_out",
+            "Label": "Loop timestep-averaged outlet temperature",
+            "Unit": "C",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_field_hot_out",
+            "Label": "Field timestep-averaged outlet temperature",
+            "Unit": "C",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "deltaP_field",
+            "Label": "Field pressure drop",
+            "Unit": "bar",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "W_dot_sca_track",
+            "Label": "Field collector tracking power",
+            "Unit": "MWe",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "W_dot_field_pump",
+            "Label": "Field htf pumping power",
+            "Unit": "MWe",
+            "Group": "trough_field"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_dot_to_heat_sink",
+            "Label": "Heat sink thermal power",
+            "Unit": "MWt",
+            "Group": "Heat_Sink"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "W_dot_pc_pump",
+            "Label": "Heat sink pumping power",
+            "Unit": "MWe",
+            "Group": "Heat_Sink"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_htf_heat_sink",
+            "Label": "Heat sink HTF mass flow",
+            "Unit": "kg/s",
+            "Group": "Heat_Sink"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_heat_sink_in",
+            "Label": "Heat sink HTF inlet temp",
+            "Unit": "C",
+            "Group": "Heat_Sink"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_heat_sink_out",
+            "Label": "Heat sink HTF outlet temp",
+            "Unit": "C",
+            "Group": "Heat_Sink"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "tank_losses",
+            "Label": "TES thermal losses",
+            "Unit": "MWt",
+            "Group": "TES"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_tes_heater",
+            "Label": "TES freeze protection power",
+            "Unit": "MWe",
+            "Group": "TES"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_tes_hot",
+            "Label": "TES hot temperature",
+            "Unit": "C",
+            "Group": "TES"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "T_tes_cold",
+            "Label": "TES cold temperature",
+            "Unit": "C",
+            "Group": "TES"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_dc_tes",
+            "Label": "TES discharge thermal power",
+            "Unit": "MWt",
+            "Group": "TES"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_ch_tes",
+            "Label": "TES charge thermal power",
+            "Unit": "MWt",
+            "Group": "TES"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "e_ch_tes",
+            "Label": "TES charge state",
+            "Unit": "MWht",
+            "Group": "TES"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_tes_dc",
+            "Label": "TES discharge mass flow rate",
+            "Unit": "kg/s",
+            "Group": "TES"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_tes_ch",
+            "Label": "TES charge mass flow rate",
+            "Unit": "kg/s",
+            "Group": "TES"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "W_dot_parasitic_tot",
+            "Label": "System total electrical parasitic",
+            "Unit": "MWe",
+            "Group": "Heat_Sink"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "op_mode_1",
+            "Label": "1st operating mode",
+            "Group": "Solver"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "op_mode_2",
+            "Label": "2nd op. mode, if applicable",
+            "Group": "Solver"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "op_mode_3",
+            "Label": "3rd op. mode, if applicable",
+            "Group": "Solver"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "m_dot_balance",
+            "Label": "Relative mass flow balance error",
+            "Group": "Controller"
+        },
+        {
+            "Data": "SSC_ARRAY",
+            "Name": "q_balance",
+            "Label": "Relative energy balance error",
+            "Group": "Controller"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_energy",
+            "Label": "Annual Net Thermal Energy Production w/ avail derate",
+            "Unit": "kWt-hr",
+            "Group": "Post-process"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_gross_energy",
+            "Label": "Annual Gross Thermal Energy Production w/ avail derate",
+            "Unit": "kWt-hr",
+            "Group": "Post-process"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_thermal_consumption",
+            "Label": "Annual thermal freeze protection required",
+            "Unit": "kWt-hr",
+            "Group": "Post-process"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_electricity_consumption",
+            "Label": "Annual electricity consumptoin w/ avail derate",
+            "Unit": "kWe-hr",
+            "Group": "Post-process"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_total_water_use",
+            "Label": "Total Annual Water Usage",
+            "Unit": "m^3",
+            "Group": "Post-process"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_field_freeze_protection",
+            "Label": "Annual thermal power for field freeze protection",
+            "Unit": "kWt-hr",
+            "Group": "Post-process"
+        },
+        {
+            "Data": "SSC_NUMBER",
+            "Name": "annual_tes_freeze_protection",
+            "Label": "Annual thermal power for TES freeze protection",
+            "Unit": "kWt-hr",
+            "Group": "Post-process"
+        }
+    ]
+}

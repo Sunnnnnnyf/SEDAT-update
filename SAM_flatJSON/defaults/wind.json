@@ -1,0 +1,17 @@
+{
+	"hub_height":80,
+	"rated_power":1790,
+	"cutin_speed":3,
+	"cutout_speed":23,
+	"temperature_lapse_rate" : 0.0065,
+    "gravity" : 9.8,
+    "gas_constant" : 8.314,
+    "molar_mass_air" : 0.0289644,
+	"capacity" : 12000,
+	"wakeloss" : 0,
+	"lifetime" : 25,
+	"inflation_rate": 0.025,
+	"capex_per_kw" :1501,
+	"opex" : 40,
+	"file_name" : "/Users/fengxiaotong/Desktop/sedat_model_selection-main/wind_speed/output_(-74.899796 43.104893).csv"
+}

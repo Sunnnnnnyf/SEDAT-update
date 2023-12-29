@@ -1,0 +1,39 @@
+{
+    "lcoefcr": [      
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "capital_cost",
+            "Label": "Capital cost",
+            "Units": "$/kW",
+            "Group": "Simple LCOE",
+            "Require": "*",
+            "Tab": "Cost Analysis"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "fixed_operating_cost",
+            "Label": "Fixed operating cost (annual)",
+            "Units": "$/kW",
+            "Group": "Simple LCOE",
+            "Require": "*",
+            "Tab": "Cost Analysis"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "variable_operating_cost",
+            "Label": "Annual variable operating cost",
+            "Units": "$/kWh",
+            "Group": "Simple LCOE",
+            "Require": "*",
+            "Tab": "Cost Analysis"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "fixed_charge_rate",
+            "Label": "Fixed charge rate",
+            "Group": "Simple LCOE",
+            "Require": "*",
+            "Tab": "Cost Analysis"
+        }
+    ]
+}

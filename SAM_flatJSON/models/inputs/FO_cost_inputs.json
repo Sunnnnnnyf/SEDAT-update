@@ -1,0 +1,296 @@
+{
+    "FO": [
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "yrs",
+            "Label": "Plant lifetime",
+            "Units": "none",
+            "Require": "*",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "downtime",
+            "Label": "System downtime",
+            "Units": "%",
+            "Require": "*",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "int_rate",
+            "Label": "Average interest rate",
+            "Units": "",
+            "Require": "*",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "unit_capex",
+            "Label": "Unit capital cost (Default value specific to 2000 m3/day capacity; adjusted internally for capacity unless the user introduces a different cost)",
+            "Units": "$ per m3/day",
+            "Require": "*",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "labor",
+            "Label": "Labor cost (Default value specific to 2000 m3/day capacity; adjusted internally for capacity unless the user introduces a different cost)",
+            "Units": "$/m3",
+            "Require": "*",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "chem_cost",
+            "Label": "Chemicals cost",
+            "Units": "$/m3",
+            "Require": "*",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "goods_cost",
+            "Label": "Durable goods cost",
+            "Units": "$/m3",
+            "Require": "*",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "coe",
+            "Label": "Unit cost of electricity (LCOE)",
+            "Units": "$/kWh",
+            "Require": "",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "coh",
+            "Label": "Unit cost of heat from fossil fuel (LCOH)",
+            "Units": "$/kWh",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+        {
+            "DataType": "SSC_STRING",
+            "Name": "solar_coh",
+            "Label": "Unit cost of heat from solar field (LCOH) (Input value to overwrite LCOH calculated from solar field)",
+            "Units": "$/kWh",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+        {
+            "DataType": "SSC_NUMBER",
+            "Name": "cost_storage",
+            "Label": "Cost of thermal storage (from solar field)",
+            "Units": "$/kWh",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "SEEC",
+            "Label": "Specific electric energy consumption",
+            "Units": "kWh/m3",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "STEC",
+            "Label": "Specific thermal energy consumption",
+            "Units": "kWh/m3",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": " LCOW calculation inputs"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_membrane",
+            "Label": "FO membrane cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_HXs",
+            "Label": "Heat exchangers cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_construct",
+            "Label": "Construction cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_DS",
+            "Label": "Draw solution cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_coalescers",
+            "Label": "Coalescers cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_structural",
+            "Label": "Structural cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_polishing",
+            "Label": "Polishing cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_pipes",
+            "Label": "Pipes and plumbing cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_filtration",
+            "Label": "Pre-filtration cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_electrical",
+            "Label": "Controls/Electrical cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_pumps",
+            "Label": "Pumps cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_instrumentation",
+            "Label": "Instrumentation cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_valves",
+            "Label": "Valves cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_CIP",
+            "Label": "CIP cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_tanks",
+            "Label": "Tanks cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_pretreatment",
+            "Label": "Pretreatment cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        },
+		{
+            "DataType": "SSC_NUMBER",
+            "Name": "Cap_others",
+            "Label": "Other capital cost (%)",
+            "Units": "%",
+            "Require": "*",
+            "Constraint": "",
+			"Tab": "Desalination",
+			"Section": "The breakdown of CAPEX (for information only)"
+        }
+    ]
+}
