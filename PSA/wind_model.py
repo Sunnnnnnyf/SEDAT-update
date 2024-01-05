@@ -7,9 +7,8 @@ import json
 
 
 class wind:
-    def __init__(self, hub_height=80, rated_power=1790, cutin_speed=3, cutout_speed=23, temperature_lapse_rate = 0.0065,
-                 gravity = 9.8,gas_constant = 8.314, molar_mass_air = 0.0289644, capacity=1790,wakeloss= 0,lifetime=25,
-                 inflation_rate=0.025,capex_per_kw = 1501 ,opex = 40,
+    def __init__(self, hub_height=80, rated_power=1790, cutin_speed=3, cutout_speed=23, capacity=1790,wakeloss= 0,lifetime=25,
+                 inflation_rate=0.025,capex_per_kw = 1501 ,opex = 40, temperature_lapse_rate = 0.0065, gravity = 9.8, gas_constant = 8.314, molar_mass_air = 0.0289644,
                  file_name ="/Users/fengxiaotong/Desktop/sedat_model_selection-main/wind_speed/output_(-74.899796 43.104893).csv",
                  new_folder_path='/tmp/results'):
         # input
@@ -17,10 +16,6 @@ class wind:
         self.rated_power = rated_power
         self.cutin_speed = cutin_speed
         self.cutout_speed = cutout_speed
-        self.temperature_lapse_rate=temperature_lapse_rate
-        self.gravity= gravity
-        self.gas_constant=gas_constant
-        self.molar_mass_air=molar_mass_air
         self.capacity= capacity # MWh per year --> MW
         self.wakeloss = float(wakeloss) # In percentage or decimal
         self.lifetime = lifetime
@@ -38,6 +33,11 @@ class wind:
     # performance parameters
 
     def windpower(self):
+        # constant
+        temperature_lapse_rate = 0.0065  # C/m (standard temperature lapse rate)
+        gravity = 9.8  # m/s^2 (acceleration due to gravity)
+        gas_constant = 8.314  # J/(mol·K) (universal gas constant)
+        molar_mass_air = 0.0289644  # kg/mol (molar mass of air)
         # Initialize variables with default values
         Adjust_power_air_density = None
         P_Pr_air_density = None
@@ -104,24 +104,17 @@ class wind:
                                                                        probabilities) * self.rated_power
 
                     # adjust power based on air density
-                    # Constants
-                    # temperature_lapse_rate = 0.0065  # C/m (standard temperature lapse rate)
-                    # gravity = 9.8  # m/s^2 (acceleration due to gravity)
-                    # gas_constant = 8.314  # J/(mol·K) (universal gas constant)
-                    # molar_mass_air = 0.0289644  # kg/mol (molar mass of air)
-
                     # Calculate temperature at hub height
                     surface_temperature = df["air temperature at 100m (C)"] + 273.15
                     surface_altitude = 100  # m
                     surface_pressure = df["air pressure at 100m (Pa)"]
-
-                    df["hub temperature (K)"] = surface_temperature - (
-                            self.temperature_lapse_rate * (self.hub_height - surface_altitude))
+                    temperature_lapse_rate = 0.0065  # C/m (standard temperature lapse rate)
+                    df["hub temperature (K)"] = surface_temperature - (temperature_lapse_rate * (self.hub_height - surface_altitude))
 
                     # Calculate pressure at hub height
                     pressure_ratio = np.exp(
-                        (-self.gravity * self.molar_mass_air * (self.hub_height - surface_altitude)) /
-                        (self.gas_constant * df["hub temperature (K)"])
+                        (-gravity * molar_mass_air * (self.hub_height - surface_altitude)) /
+                        (gas_constant * df["hub temperature (K)"])
                     )
                     # Calculate air density
                     df["hub pressure (Pa)"] = surface_pressure * pressure_ratio
@@ -162,12 +155,6 @@ class wind:
                                                                        probabilities) * self.rated_power
 
                     # adjust power based on air density
-                    # Constants (You can keep these constants since they don't change)
-                    temperature_lapse_rate = 0.0065  # C/m (standard temperature lapse rate)
-                    gravity = 9.8  # m/s^2 (acceleration due to gravity)
-                    gas_constant = 8.314  # J/(mol·K) (universal gas constant)
-                    molar_mass_air = 0.0289644  # kg/mol (molar mass of air)
-
                     # Calculate temperature at hub height
                     surface_temperature = df["air temperature at 100m (C)"] + 273.15
                     surface_altitude = 100  # m
@@ -220,12 +207,6 @@ class wind:
                                                                        probabilities) * self.rated_power
 
                     # adjust power based on air density
-                    # Constants (You can keep these constants since they don't change)
-                    temperature_lapse_rate = 0.0065  # C/m (standard temperature lapse rate)
-                    gravity = 9.8  # m/s^2 (acceleration due to gravity)
-                    gas_constant = 8.314  # J/(mol·K) (universal gas constant)
-                    molar_mass_air = 0.0289644  # kg/mol (molar mass of air)
-
                     # Calculate temperature at hub height
                     surface_temperature = df["air temperature at 100m (C)"] + 273.15
                     surface_altitude = 100  # m

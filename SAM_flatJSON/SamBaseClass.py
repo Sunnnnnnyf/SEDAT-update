@@ -414,10 +414,6 @@ class SamBaseClass(object):
                                       rated_power=wind_input['rated_power'],
                                       cutin_speed=wind_input['cutin_speed'],
                                       cutout_speed=wind_input['cutout_speed'],
-                                      temperature_lapse_rate=wind_input['temperature_lapse_rate'],
-                                      gravity=wind_input['gravity'],
-                                      gas_constant=wind_input['gas_constant'],
-                                      molar_mass_air=wind_input['molar_mass_air'],
                                       capacity = wind_input["capacity"],
                                       wakeloss= wind_input['wakeloss'],
                                       lifetime = wind_input['lifetime'],
@@ -814,10 +810,12 @@ class SamBaseClass(object):
         
         elif desal == 'OARO':
             from DesalinationModels.OARO import OARO
-            self.OARO = OARO(FeedC_r =self.desal_values_json['FeedC_r'], Capacity =self.desal_values_json['Capacity'], rr =self.desal_values_json['rr'])
+            self.OARO = OARO(FeedC_r =self.desal_values_json['FeedC_r'],
+                             Capacity =self.desal_values_json['Capacity'],
+                             rr =self.desal_values_json['rr'])
             self.design_output, self.costout =self.OARO.design()    
 
-            self.simu_output = self.OARO.simulation(gen = self.elec_gen, storage = self.desal_values_json['storage_hour'])
+            self.simu_output = self.OARO.simulation(gen = [self.elec_gen[i] + self.wind_gen[i] for i in range(len(self.elec_gen))], storage = self.desal_values_json['storage_hour'])
         
         elif desal == 'LSRRO':
             from DesalinationModels.LSRRO import LSRRO
@@ -1194,7 +1192,8 @@ class SamBaseClass(object):
             from DesalinationModels.OARO_cost import OARO_cost
             self.LCOW = OARO_cost(Capacity = self.desal_values_json['Capacity'], Prod = (self.simu_output[4]['Value']), fuel_usage = self.simu_output[7]['Value'], oaro_area  = self.costout['oaro_area'], ro_area  = self.costout['ro_area'],  yrs = self.cost_values_json['yrs'], int_rate =  self.cost_values_json['int_rate'], coe =  self.cost_values_json['coe'], 
                                 insurance = self.cost_values_json['insurance'], downtime =  self.cost_values_json['downtime'],disposal_cost =  self.cost_values_json['disposal_cost'], chem_cost =  self.cost_values_json['chem_cost'], labor_cost =  self.cost_values_json['labor_cost'], rep_rate =  self.cost_values_json['rep_rate'], pumpcost = self.costout['pumpcost'], erdcost  = self.costout['erdcost'], ro_cost  =  self.cost_values_json['ro_cost'], oaro_cost  =  self.cost_values_json['oaro_cost'],
-                                solar_coe = self.cost_values_json['solar_coe'], sec =  self.costout['sec'], sam_coe = self.lcoe, practical_inv_factor = self.cost_values_json['practical_inv_factor'], storage_cap = self.OARO.storage_cap )
+                                solar_coe = self.cost_values_json['solar_coe'], sec =  self.costout['sec'], sam_coe = self.lcoe, practical_inv_factor = self.cost_values_json['practical_inv_factor'], storage_cap = self.OARO.storage_cap,
+                                wind_coe=self.wind_lcoe, curtailment_perc = self.simu_output[-1]['Value'] )
         
             self.cost_output = self.LCOW.lcow()
             

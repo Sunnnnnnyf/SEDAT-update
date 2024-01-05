@@ -17,36 +17,40 @@ from DesalinationModels.desalinationcosts import CR_factor
 
 class OARO_cost(object):
     def __init__(self,
-                 Capacity = 1000, # Desalination plant capacity (m3/day)
-                 Prod = 328500, # Annual permeate production (m3)
-                 oaro_area = 40.8 , # Membrane area (m2)
+                 Capacity = 1000,  # Desalination plant capacity (m3/day)
+                 Prod = 328500,  # Annual permeate production (m3)
+                 oaro_area = 40.8,  # Membrane area (m2)
                  ro_area = 30,
                  Ma = 1.6e-13,
-                 fuel_usage = 0, # Total fuel usage (%)
+                 fuel_usage = 0,  # Total fuel usage (%)
                  pumpcost = 123568,
                  erdcost = 12474,
                  # Pflux = 1.1375,  # Permeate flow per module (m3/h/module)
                  ro_cost = 30,
-                 oaro_cost=50, # cost per unit area of membrane (USD/m2)
-                 pressure_vessel_cost= 1000, # cost per pressure vessel (USD/vessel)-- just guessing 1000 to fill value for now: 2/25/2020 
-#                 FFR  = 17, # Feed flow rate per module (m3/h/module)
-#                 GOR = 10.475,  # Gained output ratio
-                # downtime = 0.1, # Yearly downtime of the plant (ratio)
-                 yrs = 20, # Expected plant lifetime
-                 int_rate = 0.04 , # Average interest rate
+                 oaro_cost=50,  # cost per unit area of membrane (USD/m2)
+                 pressure_vessel_cost= 1000,  # cost per pressure vessel (USD/vessel)-- just guessing 1000 to fill value for now: 2/25/2020
+                 #                 FFR  = 17, # Feed flow rate per module (m3/h/module)
+                 #                 GOR = 10.475,  # Gained output ratio
+                 # downtime = 0.1, # Yearly downtime of the plant (ratio)
+                 yrs = 20,  # Expected plant lifetime
+                 int_rate = 0.04,  # Average interest rate
                  coe = 0.07,  # Unit cost of electricity ($/kWh)
                  sam_coe = 0.07,
-                 downtime = 10, # Annual downtime percentage (%)
-                 sec = 5.3, #
-                 chem_cost=0.03, # specific chemical cost ($/m3)
+                 downtime = 10,  # Annual downtime percentage (%)
+                 sec = 5.3,  #
+                 chem_cost=0.03,  # specific chemical cost ($/m3)
                  labor_cost=0.05,  # specific labor cost ($/m3)
-                 disposal_cost = 0.01, # specific disposal cost ($/m3)
-                 insurance = 0.5, # percentage of capex (%)
-                 rep_rate=5,    # membrane replacement 
-                 practical_inv_factor = 1.6, # Practical investment factor to convert total equipment costs to total capital investment
-                 storage_cap = 0, # Capacity of battery (kWh)
+                 disposal_cost = 0.01,  # specific disposal cost ($/m3)
+                 insurance = 0.5,  # percentage of capex (%)
+                 rep_rate=5,  # membrane replacement
+                 practical_inv_factor = 1.6,  # Practical investment factor to convert total equipment costs to total capital investment
+                 storage_cap = 0,  # Capacity of battery (kWh)
                  cost_storage = 26,
                  solar_coe = None,
+                 solar_capacity=3000,  # MW
+                 wind_capacity=12000,  # MW
+                 wind_coe=0.032,  # unit cost of electricity($/kWh)
+                 curtailment_perc = 0,
                  ):
 
         self.chem_cost=chem_cost 
@@ -65,10 +69,13 @@ class OARO_cost(object):
         self.ro_cost = ro_cost
         self.oaro_cost =oaro_cost
         # self.total_area = self.num_modules*self.Area
-
+        self.wind_coe = wind_coe
+        self.solar_capacity = solar_capacity
+        self.wind_capacity = wind_capacity
+        self.total_rated_power = self.solar_capacity + self.wind_capacity
         self.SEC=sec
         self.capacity=Capacity
-
+        self.curtailment_perc = curtailment_perc
         # calculate membrane replacement cost
         rep_yr = rep_rate
         self.replacement_rate = 0
@@ -98,18 +105,20 @@ class OARO_cost(object):
         self.memrepcost = (self.oaro_area * self.oaro_cost + self.ro_area * self.ro_cost) * self.replacement_rate / self.ann_prod
         self.maintlaborcost = self.labor_cost 
         self.chemicost = self.chem_cost 
-        self.disposalcost = self.disposal_cost 
-        self.energycost = self.SEC * (self.fuel_usage * self.coe + (1-self.fuel_usage) * self.sam_coe)
+        self.disposalcost = self.disposal_cost
         self.salmakeupcost = 0.025 *self.Ma* 3600* self.ann_prod/self.capacity
         self.insurance_cost = self.insurance * self.CAPEX / self.ann_prod
-        self.OPEX = self.memrepcost +  self.chemicost + self.maintlaborcost + self.salmakeupcost + self.disposalcost + self.insurance_cost + self.energycost
+
         
 
         CR_factor = 1/((1 - (1 /(1 + self.int_rate ) ** self.yrs)) / self.int_rate )
         self.annualized_CAPEX = CR_factor * self.CAPEX / self.ann_prod
-        
-        self.cost_elec = self.SEC * (self.fuel_usage * self.coe + (1-self.fuel_usage) * self.sam_coe)
-        
+        sam_proportion= self.solar_capacity/self.total_rated_power
+        wind_proportion = self.wind_capacity/self.total_rated_power
+        self.renewable_energy_cost = self.SEC * (1 - self.fuel_usage) * (sam_proportion * self.sam_coe + wind_proportion * self.wind_coe) / (1 - self.curtailment_perc / 100)
+        self.cost_elec = self.SEC * (self.fuel_usage * self.coe + (1 - self.fuel_usage) * (sam_proportion * self.sam_coe +
+                                                                          wind_proportion * self.wind_coe) / (1 - self.curtailment_perc / 100))
+        self.OPEX = self.memrepcost + self.chemicost + self.maintlaborcost + self.salmakeupcost + self.disposalcost + self.insurance_cost + self.cost_elec
         self.LCOW = self.annualized_CAPEX + self.OPEX 
 
         mem_capex = CR_factor * (self.oaro_area * self.oaro_cost + self.ro_area * self.ro_cost) / self.ann_prod
@@ -120,6 +129,10 @@ class OARO_cost(object):
         cost_output.append({'Name':'Levelized cost of water','Value':self.LCOW,'Unit':'$/m3'})
         cost_output.append({'Name':'Levelized cost of electricity (from fossile fuel)','Value':self.coe,'Unit':'$/m3'})
         cost_output.append({'Name':'Levelized cost of electricity (from solar field)','Value':self.sam_coe,'Unit':'$/m3'})
+        cost_output.append({'Name': 'Levelized cost of electricity (from wind field)', 'Value': self.wind_coe, 'Unit': '$/kWh'})
+        cost_output.append({'Name': 'Levelized cost of electricity (from renewable energy field)', 'Value': self.renewable_energy_cost, 'Unit': '$/kWh'})
+        cost_output.append({'Name': 'Curtailment percentage', 'Value': self.curtailment_perc, 'Unit': '%'})
+        cost_output.append({'Name': 'Fuel usage percentage', 'Value': self.fuel_usage * 100, 'Unit': '%'})
         cost_output.append({'Name':'Energy cost','Value':self.cost_elec,'Unit':'$/m3'})    
 
         return cost_output
