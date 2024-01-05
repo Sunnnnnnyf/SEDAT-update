@@ -171,7 +171,7 @@ class RO_cost(object):
         cost_output.append({'Name':'Levelized cost of electricity (from fossile fuel)','Value':self.coe,'Unit':'$/kWh'})
         cost_output.append({'Name':'Levelized cost of electricity (from solar field)','Value':self.sam_coe,'Unit':'$/kWh'})
         cost_output.append({'Name': 'Levelized cost of electricity (from wind field)', 'Value': self.wind_coe, 'Unit': '$/kWh'})
-        cost_output.append({'Name': 'Curtailment percentage', 'Value': self.curtailment_perc * 100, 'Unit': '%'})
+        cost_output.append({'Name': 'Curtailment percentage', 'Value': self.curtailment_perc, 'Unit': '%'})
         cost_output.append({'Name': 'Fuel usage percentage', 'Value': self.fuel_usage * 100, 'Unit': '%'})
         cost_output.append({'Name':'Energy cost','Value':self.cost_elec,'Unit':'$/m3'})    
         
